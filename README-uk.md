@@ -129,7 +129,7 @@ make: *** [serve] Error 1
 
 `launchctl limit maxfiles`
 
-Потім запустіть наступну команду (взято з<https://gist.github.com/tombigel/d503800a282fcadbee14b537735d202c>):
+Потім виконайте наступні команди (взято з <https://gist.github.com/tombigel/d503800a282fcadbee14b537735d202c>):
 
 ```shell
 #!/bin/sh
