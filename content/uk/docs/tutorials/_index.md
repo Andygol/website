@@ -1,7 +1,7 @@
 ---
-#title: Tutorials
 title: Навчальні матеріали
 main_menu: true
+no_list: true
 weight: 60
 content_type: concept
 ---
@@ -23,17 +23,20 @@ Before walking through each tutorial, you may want to bookmark the
 
 <!--## Basics
 -->
+
 ## Основи
 
-<!--* [Kubernetes Basics](/docs/tutorials/kubernetes-basics/) is an in-depth interactive tutorial that helps you understand the Kubernetes system and try out some basic Kubernetes features.
+* <!--* [Kubernetes Basics](/docs/tutorials/kubernetes-basics/) is an in-depth interactive tutorial that helps you understand the Kubernetes system and try out some basic Kubernetes features.
 -->
 * [Основи Kubernetes](/docs/tutorials/kubernetes-basics/) - детальний навчальний матеріал з інтерактивними уроками, що допоможе вам зрозуміти Kubernetes і спробувати його базову функціональність.
 * [Масштабовані мікросервіси з Kubernetes (Udacity)](https://www.udacity.com/course/scalable-microservices-with-kubernetes--ud615)
-* [Вступ до Kubernetes (edX)](https://www.edx.org/course/introduction-kubernetes-linuxfoundationx-lfs158x#)
-* [Привіт Minikube](/docs/tutorials/hello-minikube/)
 
-<!--## Configuration
+## [Вступ до Kubernetes (edX)](https://www.edx.org/course/introduction-kubernetes-linuxfoundationx-lfs158x#)
+
+* [Привіт Minikube](/docs/tutorials/hello-minikube/)
+* <!--## Configuration
 -->
+
 ## Конфігурація
 
 * [Приклад: Конфігурування Java мікросервісу](/docs/tutorials/configuration/configure-java-microservice/)
@@ -43,11 +46,11 @@ Before walking through each tutorial, you may want to bookmark the
 
 * [Відкриття зовнішньої IP-адреси для доступу до програми в кластері](/docs/tutorials/stateless-application/expose-external-ip-address/)
 * [Приклад: Розгортання застосунку PHP Guestbook з Redis](/docs/tutorials/stateless-application/guestbook/)
-
-## Застосунки зі станом (Stateful Applications) {#застосунки-зі-станом}
-
+* Застосунки зі станом (Stateful Applications) {#застосунки-зі-станом}
 * [Основи StatefulSet](/docs/tutorials/stateful-application/basic-stateful-set/)
-* [Приклад: WordPress та MySQL із постійними томами](/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/)
+
+## [Приклад: WordPress та MySQL із постійними томами](/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/)
+
 * [Приклад: Розгортання Cassandra зі Stateful Sets](/docs/tutorials/stateful-application/cassandra/)
 * [Запуск ZooKeeper, координатора розподіленої системи](/docs/tutorials/stateful-application/zookeeper/)
 
@@ -55,13 +58,9 @@ Before walking through each tutorial, you may want to bookmark the
 
 * [AppArmor](/docs/tutorials/clusters/apparmor/)
 * [Seccomp](/docs/tutorials/clusters/seccomp/)
-
-## Сервіси
-
+* Сервіси
 * [Використання Source IP](/docs/tutorials/services/source-ip/)
-
 ## {{% heading "whatsnext" %}}
-
 
 <!--If you would like to write a tutorial, see
 [Using Page Templates](/docs/home/contribute/page-templates/)
