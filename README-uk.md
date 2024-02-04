@@ -91,7 +91,7 @@ make container-serve
    curl 'https://raw.githubusercontent.com/kubernetes/kubernetes/master/api/openapi-spec/swagger.json' > api-ref-assets/api/swagger.json
    ```
 
-3. У `api-ref-assets/config/`, змініть файли `toc.yaml` та `fields.yaml`, так щоб вони вказували на новий випуск.
+3. В `api-ref-assets/config/`, змініть файли `toc.yaml` та `fields.yaml`, так щоб вони вказували на новий випуск.
 
 4. Далі, зберіть сторінки:
 
