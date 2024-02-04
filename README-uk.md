@@ -27,7 +27,7 @@ git clone https://github.com/kubernetes/website.git
 cd website
 ```
 
-Сайт Kubernetes використовує  [Docsy Hugo theme](https://github.com/google/docsy#readme). Навіть якщо ви плануєте запускати вебсайт в контейнері, ми настійливо рекомендуємо витягнути субмодулі та інші залежності зробивши наступне:
+Сайт Kubernetes використовує  [Docsy Hugo theme](https://github.com/google/docsy#readme). Навіть якщо ви плануєте запускати вебсайт в контейнері, ми настійливо рекомендуємо встановити субмодулі та інші залежності зробивши наступне:
 
 ### Windows
 ```powershell
