@@ -106,7 +106,7 @@ make container-serve
    make container-serve
    ```
 
-   У вебоглядачі перейдіть до <http://localhost:1313/docs/reference/kubernetes-api/>для перегляду довідки API.
+   У вебоглядачі перейдіть до <http://localhost:1313/docs/reference/kubernetes-api/> для перегляду довідки API.
 
 5. Коли всі зміни, щодо переходу на нову версію внесені у файли toc.yaml` та `fields.yaml`, створіть запит на втягування (pull request) з новоствореними сторінками довідки API.
 
