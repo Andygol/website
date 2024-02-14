@@ -260,8 +260,8 @@ It can even contain shortcodes.
 {{% /tab %}}
 {{< tab name="HTML" >}}
 <div>
-	<h3>Plain HTML</h3>
-	<p>This is some <i>plain</i> HTML.</p>
+    <h3>Plain HTML</h3>
+    <p>This is some <i>plain</i> HTML.</p>
 </div>
 {{< /tab >}}
 {{< /tabs */>}}
@@ -280,8 +280,8 @@ It can even contain shortcodes.
 {{% /tab %}}
 {{< tab name="HTML" >}}
 <div>
-	<h3>Plain HTML</h3>
-	<p>This is some <i>plain</i> HTML.</p>
+    <h3>Plain HTML</h3>
+    <p>This is some <i>plain</i> HTML.</p>
 </div>
 {{< /tab >}}
 {{< /tabs >}}
