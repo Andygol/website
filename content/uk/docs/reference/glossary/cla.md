@@ -2,10 +2,9 @@
 title: CLA (Ліцензійна угода учасника)
 id: cla
 date: 2018-04-12
-full_link: https://github.com/kubernetes/community/blob/master/CLA.md
+full_link: "https://github.com/kubernetes/community/blob/master/CLA.md"
 short_description: >
-  Умови, за якими учасник ліцензує свій внесок до проєкту з відкритими сирцями.
-
+Умови, за якими учасник ліцензує свій внесок до проєкту з відкритими сирцями.
 aka: 
 tags:
 - community
@@ -15,3 +14,4 @@ tags:
 <!--more--> 
 
 CLA допомагає вирішувати юридичні спори, повʼязані із наданим матеріалом та правами на інтелектуальну власність (IP, intellectual property).
+
