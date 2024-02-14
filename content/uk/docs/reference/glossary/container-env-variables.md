@@ -4,13 +4,12 @@ id: container-env-variables
 date: 2018-04-12
 full_link: /docs/concepts/containers/container-environment/
 short_description: >
-  Змінні середовища контейнера — це пари name=value, які надають корисну інформацію контейнерам, які працюють у Podʼі.
-
+Змінні середовища контейнера — це пари name=value, які надають корисну інформацію контейнерам, які працюють у Podʼі.
 aka: 
 tags:
 - fundamental
 ---
-Змінні середовища контейнера — це пари name=value, які надають корисну інформацію контейнерам, які працюють у {{< glossary_tooltip text="Podʼі" term_id="pod" >}}.
+ Змінні середовища контейнера — це пари name=value, які надають корисну інформацію контейнерам, які працюють у {{< glossary_tooltip text="Podʼі" term_id="pod" >}}.
 
 <!--more-->
 
