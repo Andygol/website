@@ -4,13 +4,12 @@ id: operator-pattern
 date: 2019-05-21
 full_link: /docs/concepts/extend-kubernetes/operator/
 short_description: >
-  Спеціалізований контролер, призначений для управління власним ресурсом.
-
+Спеціалізований контролер, призначений для управління власним ресурсом.
 aka:
 tags:
 - architecture
 ---
-[Шаблон Operator](/docs/concepts/extend-kubernetes/operator/) — це системний дизайн, який повʼязує контролер з одним чи кількома власними ресурсами.
+ [Шаблон Operator](/docs/concepts/extend-kubernetes/operator/) — це системний дизайн, який повʼязує контролер з одним чи кількома власними ресурсами.
 
 <!--more-->
 
