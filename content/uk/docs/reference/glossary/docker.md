@@ -2,15 +2,14 @@
 title: Docker
 id: docker
 date: 2018-04-12
-full_link: https://docs.docker.com/engine/
+full_link: "https://docs.docker.com/engine/"
 short_description: >
-  Docker — програмне забезпеяення, що впроваджує віртуалізацію на рівні операційної системи, також відому як контейнери.
-
+Docker — програмне забезпеяення, що впроваджує віртуалізацію на рівні операційної системи, також відому як контейнери.
 aka:
 tags:
 - fundamental
 ---
-Docker (зокрема, Docker Engine) — це програмна технологія, яка забезпечує віртуалізацію на рівні операційної системи, також відому як {{< glossary_tooltip text="контейнери" term_id="container" >}}.
+Docker (зокрема, Docker Engine) — це програмна технологія, яка забезпечує віртуалізацію на рівні операційної системи, також відому як {{< glossary_tooltip text="контейнери" term_id="container" >}}.
 
 <!--more-->
 
