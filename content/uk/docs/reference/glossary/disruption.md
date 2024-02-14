@@ -4,12 +4,12 @@ id: розлад
 date: 2019-09-10
 full_link: /docs/concepts/workloads/pods/disruptions/
 short_description: >
-  Подія, що призводить до виходу з ладу Pod(ів)
+Подія, що призводить до виходу з ладу Pod(ів)
 aka:
 tags:
 - fundamental
 ---
-Розлади — це події, які призводять до виходу з ладу одного чи кількох {{< glossary_tooltip term_id="pod" text="Podʼів" >}}. Розлад має наслідки для ресурсів робочого навантаження, таких як {{< glossary_tooltip term_id="deployment" >}}, які покладаються постраждалі Podʼі.
+ Розлади — це події, які призводять до виходу з ладу одного чи кількох {{< glossary_tooltip term_id="pod" text="Podʼів" >}}. Розлад має наслідки для ресурсів робочого навантаження, таких як {{< glossary_tooltip term_id="deployment" >}}, які покладаються постраждалі Podʼі.
 
 <!--more-->
 
