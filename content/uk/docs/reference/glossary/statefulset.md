@@ -4,8 +4,7 @@ id: statefulset
 date: 2018-04-12
 full_link: /docs/concepts/workloads/controllers/statefulset/
 short_description: >
-  StatefulSet керує розгортанням і масштабуванням групи обʼєктів Pod з постійним сховищем та постійними ідентифікаторами для кожного обʼєкта Pod.
-
+StatefulSet керує розгортанням і масштабуванням групи обʼєктів Pod з постійним сховищем та постійними ідентифікаторами для кожного обʼєкта Pod.
 aka: 
 tags:
 - fundamental
@@ -13,7 +12,7 @@ tags:
 - workload
 - storage
 ---
-StatefulSet керує розгортанням і масштабуванням групи {{< glossary_tooltip text="Podʼів" term_id="pod" >}}, *і забезпечує гарантії щодо порядку та унікальності* цих Podʼів.
+ StatefulSet керує розгортанням і масштабуванням групи {{< glossary_tooltip text="Podʼів" term_id="pod" >}}, *і забезпечує гарантії щодо порядку та унікальності* цих Podʼів.
 
 <!--more--> 
 
