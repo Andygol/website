@@ -201,7 +201,7 @@ keyed with `log_level`.
 
 * A container using a ConfigMap as a [`subPath`](#using-subpath) volume mount will not
   receive ConfigMap updates.
-  
+
 * Text data is exposed as files using the UTF-8 character encoding. For other character encodings, use `binaryData`.
 
 {{< /note >}}
@@ -1107,7 +1107,7 @@ configuration changes to existing Storage Classes, PersistentVolumes or Persiste
 Existing PVs created by a in-tree volume plugin can still be used in the future without any configuration
 changes, even after the migration to CSI is completed for that volume type, and even after you upgrade to a
 version of Kubernetes that doesn't have compiled-in support for that kind of storage.
- 
+
 As part of that migration, you - or another cluster administrator - **must** have installed and configured
 the appropriate CSI driver for that storage. The core of Kubernetes does not install that software for you.
 
