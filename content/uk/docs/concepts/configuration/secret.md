@@ -6,7 +6,7 @@ content_type: concept
 feature:
   title: Управління Secret та налаштуваннями
   description: >
-    Розгортання та оновлення Secrets та налаштуваннями застосунків без перебудови образу та без розкриття Secrets в конфігурації стеку.
+Розгортання та оновлення Secrets та налаштуваннями застосунків без перебудови образу та без розкриття Secrets в конфігурації стеку.
 weight: 30
 ---
 
@@ -38,10 +38,10 @@ Deployment.
 In order to safely use Secrets, take at least the following steps:
 
 1. [Enable Encryption at Rest](/docs/tasks/administer-cluster/encrypt-data/) for Secrets.
-2. [Enable or configure RBAC rules](/docs/reference/access-authn-authz/authorization/) with
+1. [Enable or configure RBAC rules](/docs/reference/access-authn-authz/authorization/) with
    least-privilege access to Secrets.
-3. Restrict Secret access to specific containers.
-4. [Consider using external Secret store providers](https://secrets-store-csi-driver.sigs.k8s.io/concepts.html#provider-for-the-secrets-store-csi-driver).
+1. Restrict Secret access to specific containers.
+1. [Consider using external Secret store providers](https://secrets-store-csi-driver.sigs.k8s.io/concepts.html#provider-for-the-secrets-store-csi-driver).
 
 For more guidelines to manage and improve the security of your Secrets, refer to
 [Good practices for Kubernetes Secrets](/docs/concepts/security/secrets-good-practices).
