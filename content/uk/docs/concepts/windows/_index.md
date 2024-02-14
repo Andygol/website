@@ -1,9 +1,9 @@
 ---
 title: "Windows у Kubernetes"
 simple_list: true
-weight: 200
-description: >-
-  Kubernetes підтримує роботу вузлів на яких запущено Microsoft Windows.
+weight: 200 # late in list
+description: >
+Kubernetes підтримує роботу вузлів на яких запущено Microsoft Windows.
 ---
 
 Kubernetes підтримує робочі {{< glossary_tooltip text="вузли" term_id="node" >}} які запущених на Linux або Microsoft Windows.
