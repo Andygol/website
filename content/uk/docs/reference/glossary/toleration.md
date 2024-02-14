@@ -4,14 +4,13 @@ id: toleration
 date: 2019-01-11
 full_link: /docs/concepts/scheduling-eviction/taint-and-toleration/
 short_description: >
-  Основний обʼєкт, що складається з трьох обовʼязкових властивостей: key, value, та effect. Toleration (дозвіл) дозволяє розміщення Podʼів на вузлах чи групах вузлів, які мають відповідні {{< glossary_tooltip text="taints" term_id="taint" >}}.
-
-aka:
+"Основний обʼєкт, що складається з трьох обовʼязкових властивостей: key, value, та effect. Toleration (дозвіл) дозволяє розміщення Podʼів на вузлах чи групах вузлів, які мають відповідні {{< glossary_tooltip text=\"taints\" term_id=\"taint\" >}}.
+"aka:
 tags:
 - core-object
 - fundamental
 ---
-Основний обʼєкт, що складається з трьох обовʼязкових властивостей: key, value, та effect. Toleration (дозвіл) дозволяє розміщення {{< glossary_tooltip text="Podʼів" term_id="pod" >}} на вузлах чи групах вузлів, які мають відповідні {{< glossary_tooltip text="taints" term_id="taint" >}}.
+ Основний обʼєкт, що складається з трьох обовʼязкових властивостей: key, value, та effect. Toleration (дозвіл) дозволяє розміщення {{< glossary_tooltip text="Podʼів" term_id="pod" >}} на вузлах чи групах вузлів, які мають відповідні {{< glossary_tooltip text="taints" term_id="taint" >}}.
 
 <!--more-->
 
