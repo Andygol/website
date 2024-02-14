@@ -4,8 +4,7 @@ id: kubectl
 date: 2018-04-12
 full_link: /docs/reference/kubectl/
 short_description: >
-  Інструмент командного рядка для взаємодії із кластером Kubernetes.
-
+Інструмент командного рядка для взаємодії із кластером Kubernetes.
 aka:
 - kubectl
 tags:
@@ -18,3 +17,4 @@ tags:
 <!--more--> 
 
 Ви можете використовувати `kubectl` для створення, перегляду, оновлення та видалення обʼєктів Kubernetes.
+
