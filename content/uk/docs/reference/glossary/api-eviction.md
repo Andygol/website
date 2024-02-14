@@ -4,12 +4,12 @@ id: api-eviction
 date: 2021-04-27
 full_link: /docs/concepts/scheduling-eviction/api-eviction/
 short_description: >
-  Ініційоване API вивільнення ресурсів — процес, під час якого  використовується Eviction API для створення обʼєкта Eviction, який викликає гармонійне завершення роботи Podʼу.
+Ініційоване API вивільнення ресурсів — процес, під час якого  використовується Eviction API для створення обʼєкта Eviction, який викликає гармонійне завершення роботи Podʼу.
 aka:
 tags:
 - operation
 ---
-Ініційоване API вивільнення ресурсів — процес, під час якого використовується [Eviction API](/docs/reference/generated/kubernetes-api/{{<param "version">}}/#create-eviction-pod-v1-core)
+Ініційоване API вивільнення ресурсів — процес, під час якого використовується [Eviction API](/docs/reference/generated/kubernetes-api/{{<param "version">}}/#create-eviction-pod-v1-core)
 для створення обʼєкта `Eviction`, який викликає гармонійне завершення роботи Podʼу.
 
 <!--more-->
