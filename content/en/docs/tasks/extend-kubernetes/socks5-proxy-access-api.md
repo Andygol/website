@@ -42,7 +42,7 @@ graph LR;
   client([client])-. local <br> traffic .->  local_ssh[Local SSH <br> SOCKS5 proxy];
   end
   local_ssh[SSH <br>SOCKS5 <br> proxy]-- SSH Tunnel -->sshd
-  
+
   subgraph remote[Remote server]
   sshd[SSH <br> server]-- local traffic -->service1;
   end
