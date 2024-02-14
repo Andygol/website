@@ -2,10 +2,9 @@
 title: containerd
 id: containerd
 date: 2019-05-14
-full_link: https://containerd.io/docs/
+full_link: "https://containerd.io/docs/"
 short_description: >
-  Середовище виконання контейнера з акцентом на простоту, надійність та переносимість.
-
+Середовище виконання контейнера з акцентом на простоту, надійність та переносимість.
 aka:
 tags:
 - tool
@@ -14,4 +13,4 @@ tags:
 
 <!--more-->
 
-containerd — це середовище виконання {{< glossary_tooltip text="контейнера" term_id="container" >}}, яке працює як служба Linux або Windows. containerd відповідає за отримання та зберігання образів контейнерів, виконання контейнерів, забезпечення мережевого доступу та інше.
+containerd — це середовище виконання {{< glossary_tooltip text="контейнера" term_id="container" >}}, яке працює як служба Linux або Windows. containerd відповідає за отримання та зберігання образів контейнерів, виконання контейнерів, забезпечення мережевого доступу та інше.
