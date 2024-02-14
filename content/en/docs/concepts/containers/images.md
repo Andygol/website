@@ -290,8 +290,8 @@ This means that a `config.json` like this is valid:
 ```json
 {
     "auths": {
-        "my-registry.io/images": { "auth": "…" },
-        "*.my-registry.io/images": { "auth": "…" }
+        "my-registry.io/images": { "auth": "..." },
+        "*.my-registry.io/images": { "auth": "..." }
     }
 }
 ```
@@ -317,10 +317,10 @@ means, that multiple entries in `config.json` for different paths are possible, 
 {
     "auths": {
         "my-registry.io/images": {
-            "auth": "…"
+            "auth": "..."
         },
         "my-registry.io/images/subpath": {
-            "auth": "…"
+            "auth": "..."
         }
     }
 }
