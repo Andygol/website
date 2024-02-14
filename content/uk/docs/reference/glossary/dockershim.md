@@ -4,8 +4,7 @@ id: dockershim
 date: 2022-04-15
 full_link: /dockershim
 short_description: >
-   Компонент Kubernetes версії 1.23 та раніше, який дозволяє системним компонентам Kubernetes взаємодіяти з Docker Engine.
-
+Компонент Kubernetes версії 1.23 та раніше, який дозволяє системним компонентам Kubernetes взаємодіяти з Docker Engine.
 aka:
 tags:
 - fundamental
