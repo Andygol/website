@@ -4,15 +4,14 @@ id: aggregation-layer
 date: 2018-10-08
 full_link: /docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/
 short_description: >
-  Шар агрегації дозволяє встановлювати додаткові API в стилі Kubernetes у вашому кластері.
-
+Шар агрегації дозволяє встановлювати додаткові API в стилі Kubernetes у вашому кластері.
 aka: 
 tags:
 - architecture
 - extension
 - operation
 ---
-Шар агрегації дозволяє встановлювати додаткові API в стилі Kubernetes у вашому кластері.
+ Шар агрегації дозволяє встановлювати додаткові API в стилі Kubernetes у вашому кластері.
 
 <!--more-->
 
