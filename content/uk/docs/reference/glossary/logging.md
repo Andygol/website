@@ -4,14 +4,13 @@ id: logging
 date: 2019-04-04
 full_link: /docs/concepts/cluster-administration/logging/
 short_description: >
-  Логи — це перелік подій, які реєструються кластером або застосунком.
-
+Логи — це перелік подій, які реєструються кластером або застосунком.
 aka: 
 tags:
 - architecture
 - fundamental
 ---
-Логи — це перелік подій, які реєструються {{< glossary_tooltip text="кластером" term_id="cluster" >}} або застосунком.
+ Логи — це перелік подій, які реєструються {{< glossary_tooltip text="кластером" term_id="cluster" >}} або застосунком.
 
 <!--more--> 
 
