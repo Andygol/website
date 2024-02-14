@@ -8,12 +8,10 @@ feature:
   title: Самовідновлення
   anchor: Як працює ReplicaSet
   description: >
-    Перезапуск контейнерів, що зізнали збою, заміна та перепланування контейнерів при відмові вузлів, прибивання контейнерів, які не відповідають визначеному користувачем стану під час перевірки, очікування їх готовності до роботи перед тим, як надати до них доступ користувачам.
+Перезапуск контейнерів, що зізнали збою, заміна та перепланування контейнерів при відмові вузлів, прибивання контейнерів, які не відповідають визначеному користувачем стану під час перевірки, очікування їх готовності до роботи перед тим, як надати до них доступ користувачам.
 content_type: concept
-description: >-
-  A ReplicaSet's purpose is to maintain a stable set of replica Pods running at any given time.
-  Usually, you define a Deployment and let that Deployment manage ReplicaSets automatically.
-weight: 20
+description: >
+A ReplicaSet's purpose is to maintain a stable set of replica Pods running at any given time. Usually, you define a Deployment and let that Deployment manage ReplicaSets automatically.weight: 20
 hide_summary: true # Listed separately in section index
 ---
 
