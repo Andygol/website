@@ -4,7 +4,7 @@ id: init-container
 date: 2018-04-12
 full_link: 
 short_description: >
-  One or more initialization containers that must run to completion before any app containers run.
+One or more initialization containers that must run to completion before any app containers run.
 full_link: /docs/concepts/workloads/pods/init-containers/
 aka: 
 tags:
