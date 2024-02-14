@@ -1,4 +1,5 @@
 ---
 title: "Stateful застосунки"
-weight: 60
+weight: 50
 ---
+
