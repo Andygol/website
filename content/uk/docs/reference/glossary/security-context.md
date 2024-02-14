@@ -4,13 +4,12 @@ id: security-context
 date: 2018-04-12
 full_link: /docs/tasks/configure-pod-container/security-context/
 short_description: >
-  Поле `securityContext` визначає налаштування привілеїв та контролю доступу для Podʼа або контейнера.
-
-aka:
+Поле `securityContext` визначає налаштування привілеїв та контролю доступу для Podʼа або контейнера.
+aka: 
 tags:
 - security
 ---
-Поле `securityContext` визначає налаштування привілеїв та контролю доступу для {{< glossary_tooltip text="Podʼа" term_id="pod" >}} або
+ Поле `securityContext` визначає налаштування привілеїв та контролю доступу для {{< glossary_tooltip text="Podʼа" term_id="pod" >}} або
 {{< glossary_tooltip text="контейнера" term_id="container" >}}.
 
 <!--more-->
