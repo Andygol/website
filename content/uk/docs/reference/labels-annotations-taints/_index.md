@@ -21,6 +21,7 @@ Kubernetes реалізує всі мітки та анотації в прос�
 
 ## Мітки, анотації та позначення, використані в обʼєктах API {#labels-annotations-and-taints-used-on-api-objects}
 
+
 ### apf.kubernetes.io/autoupdate-spec
 
 Тип: Annotation
@@ -125,12 +126,11 @@ Kubernetes реалізує всі мітки та анотації в прос�
 
 - [семантична версія](https://semver.org/spec/v1.0.0.html)
 - [хеш ревізії Git](https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection#_single_revisions) для вихідного коду.
+  Одна з [рекомендованих міток](/docs/concepts/overview/working-with-objects/common-labels/#labels).
 
-Одна з [рекомендованих міток](/docs/concepts/overview/working-with-objects/common-labels/#labels).
+applyset.kubernetes.io/additional-namespaces (alpha) {#applyset-kubernetes-io-additional-namespaces}
 
-### applyset.kubernetes.io/additional-namespaces (alpha) {#applyset-kubernetes-io-additional-namespaces}
-
-Тип: Annotation
+### Тип: Annotation
 
 Приклад: `applyset.kubernetes.io/additional-namespaces: "namespace1,namespace2"`
 
@@ -138,10 +138,9 @@ Kubernetes реалізує всі мітки та анотації в прос�
 
 Використання цієї анотації є альфа-версією. Для Kubernetes версії {{< skew currentVersion >}} ви можете використовувати цю анотацію на Secrets, ConfigMaps або власних ресурсах, якщо {{< glossary_tooltip term_id="CustomResourceDefinition" text="CustomResourceDefinition" >}}, що їх визначає, має мітку `applyset.kubernetes.io/is-parent-type`.
 
-Частина специфікації, яка використовується для реалізації [обрізки на основі ApplySet в kubectl](/docs/tasks/manage-kubernetes-objects/declarative-config/#alternative-kubectl-apply-f-directory-prune). Ця анотація застосовується до батьківського обʼєкта, який використовується для відстеження ApplySet для розширення області застосування ApplySet поза власним простором імен батьківського об'єкта (якщо є). Значення — це розділені комами імена просторів імен, в яких знаходяться обʼєкти, відмінні від простору імен батьківського обʼєкта.
+Частина специфікації, яка використовується для реалізації [обрізки на основі ApplySet в kubectl](/docs/tasks/manage-kubernetes-objects/declarative-config/#alternative-kubectl-apply-f-directory-prune). Ця анотація застосовується до батьківського обʼєкта, який використовується для відстеження ApplySet для розширення області застосування ApplySet поза власним простором імен батьківського об'єкта (якщо є). Значення — це розділені комами імена просторів імен, в яких знаходяться обʼєкти, відмінні від простору імен батьківського обʼєкта.
 
 <!-- Incompleat Ukrainian translation -->
-
 
 ### applyset.kubernetes.io/contains-group-resources (alpha) {#applyset-kubernetes-io-contains-group-resources}
 
