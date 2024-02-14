@@ -4,14 +4,13 @@ id: service-account
 date: 2018-04-12
 full_link: /docs/tasks/configure-pod-container/configure-service-account/
 short_description: >
-  Забезпечує ідентифікацію для процесів, які працюють в Podʼі.
-
-aka:
+Забезпечує ідентифікацію для процесів, які працюють в Podʼі.
+aka: 
 tags:
 - fundamental
 - core-object
 ---
-Забезпечує ідентифікацію для процесів, які працюють в {{< glossary_tooltip text="Podʼі" term_id="pod" >}}.
+ Забезпечує ідентифікацію для процесів, які працюють в {{< glossary_tooltip text="Podʼі" term_id="pod" >}}.
 
 <!--more-->
 
