@@ -4,8 +4,7 @@ id: container-runtime-interface
 date: 2021-11-24
 full_link: /docs/concepts/architecture/cri
 short_description: >
-  Основний протокол для взаємодії між kubelet та контейнерним середовищем.
-
+Основний протокол для взаємодії між kubelet та контейнерним середовищем.
 aka:
 tags:
   - cri
