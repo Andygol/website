@@ -2,15 +2,14 @@
 title: FlexVolume
 id: flexvolume
 date: 2018-06-25
-full_link: /docs/concepts/storage/volumes/#flexvolume
+full_link: "/docs/concepts/storage/volumes/#flexvolume"
 short_description: >
-    FlexVolume — інтерфейс, зараз визнаний застарілим, для створення втулків зовнішніх томів. {{< glossary_tooltip text="Container Storage Interface" term_id="csi" >}} – це новіший інтерфейс, який вирішує кілька проблем з FlexVolume.
-
+FlexVolume — інтерфейс, зараз визнаний застарілим, для створення втулків зовнішніх томів. {{< glossary_tooltip text="Container Storage Interface" term_id="csi" >}} – це новіший інтерфейс, який вирішує кілька проблем з FlexVolume.
 aka: 
 tags:
 - storage 
 ---
-FlexVolume — інтерфейс, зараз визнаний застарілим, для створення втулків зовнішніх томів. {{< glossary_tooltip text="Container Storage Interface" term_id="csi" >}} — це новіший інтерфейс, який вирішує кілька проблем з FlexVolume.
+ FlexVolume — інтерфейс, зараз визнаний застарілим, для створення втулків зовнішніх томів. {{< glossary_tooltip text="Container Storage Interface" term_id="csi" >}} — це новіший інтерфейс, який вирішує кілька проблем з FlexVolume.
 
 <!--more--> 
 
