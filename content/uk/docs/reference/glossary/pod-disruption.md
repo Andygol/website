@@ -4,17 +4,16 @@ title: Переривання роботи Podʼу
 full_link: /docs/concepts/workloads/pods/disruptions/
 date: 2021-05-12
 short_description: >
-  Процес, за якого Podʼи на вузлах припиняють роботу добровільно, або примусово.
-
+Процес, за якого Podʼи на вузлах припиняють роботу добровільно, або примусово.
 aka:
 related:
  - pod
  - container
 tags:
-  - operation
+ - operation
 ---
 
-[Переривання роботи Podʼу](/docs/concepts/workloads/pods/disruptions/) — це процес, за якого Podʼи на вузлах припиняють роботу добровільно, або примусово.
+[Переривання роботи Podʼу](/docs/concepts/workloads/pods/disruptions/) — це процес, за якого Podʼи на вузлах припиняють роботу добровільно, або примусово.
 
 <!--more-->
 
