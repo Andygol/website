@@ -639,7 +639,7 @@ resources:
       - identity: {} # REMOVE THIS LINE
 {{< /highlight >}}
 
-…and then restart each API server in turn. This change prevents the API server
+...and then restart each API server in turn. This change prevents the API server
 from accessing a plain-text Secret, even by accident.
 
 ## Rotate a decryption key {#rotating-a-decryption-key}
