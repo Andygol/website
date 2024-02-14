@@ -4,13 +4,12 @@ id: app-container
 date: 2019-02-12
 full_link:
 short_description: >
-  Контейнер, що використовується для запуску частини робочого навантаження. Порівняйте з контейнером ініціалізації.
-
+Контейнер, що використовується для запуску частини робочого навантаження. Порівняйте з контейнером ініціалізації.
 aka:
 tags:
 - workload
 ---
-Контейнери застосунків — це {{< glossary_tooltip text="контейнери" term_id="container" >}} в {{< glossary_tooltip text="Podʼі" term_id="pod" >}}, які запускаються після завершення роботи будь-яких {{< glossary_tooltip text="контейнерів ініціалізації" term_id="init-container" >}}.
+ Контейнери застосунків — це {{< glossary_tooltip text="контейнери" term_id="container" >}} в {{< glossary_tooltip text="Podʼі" term_id="pod" >}}, які запускаються після завершення роботи будь-яких {{< glossary_tooltip text="контейнерів ініціалізації" term_id="init-container" >}}.
 
 <!--more-->
 
