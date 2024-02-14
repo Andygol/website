@@ -43,7 +43,7 @@ kube-apiserver \
 --peer-advertise-ip=`IP of this kube-apiserver that should be used by peers to proxy requests`
 --peer-advertise-port=`port of this kube-apiserver that should be used by peers to proxy requests`
 
-# …and other flags as usual
+# ...and other flags as usual
 ```
 
 ### Proxy transport and authentication between API servers {#transport-and-authn}
