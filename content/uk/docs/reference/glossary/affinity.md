@@ -2,20 +2,18 @@
 title: Спорідненість
 id: affinity
 date: 2019-01-11
-full_link: /docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
+full_link: "/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity"
 short_description: >
-    Правила, що використовуються планувальником для визначення місця розташування Podʼів.
-
+Правила, що використовуються планувальником для визначення місця розташування Podʼів.
 aka:
 tags:
 - fundamental
 ---
 
-У Kubernetes _Affinity_ — це набір правил, які дають підказки планувальнику, де розміщувати поди.
+У Kubernetes _Affinity_ — це набір правил, які дають підказки планувальнику, де розміщувати поди.
 
 <!--more-->
 Є два види спорідненості:
-
 * [спорідненість вузла](/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity)
 * [спорідненість між Podʼами](/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity)
 
