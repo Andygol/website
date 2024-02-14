@@ -4,16 +4,14 @@ id: CustomResourceDefinition
 date: 2018-04-12
 full_link: /docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 short_description: >
-  Власний код, який визначає ресурс для додавання до сервера API вашого кластера Kubernetes без створення власного сервера.
-
+Власний код, який визначає ресурс для додавання до сервера API вашого кластера Kubernetes без створення власного сервера.
 aka: 
 tags:
 - fundamental
 - operation
 - extension
 ---
-
-Власний код, який визначає ресурс для додавання до сервера API вашого кластера Kubernetes без створення власного сервера.
+ Власний код, який визначає ресурс для додавання до сервера API вашого кластера Kubernetes без створення власного сервера.
 
 <!--more-->
 
