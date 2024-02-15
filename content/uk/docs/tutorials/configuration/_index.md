@@ -1,4 +1,5 @@
 ---
-title: "Налаштування"
+title: "Конфігурація {#configuration}"
 weight: 30
 ---
+
