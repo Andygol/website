@@ -649,7 +649,7 @@ kubectl delete pod myapp
 
 ### Застосування профілю custom {#custom-profile}
 
-{{< feature-state for_k8s_version="v1.31" state="beta" >}}
+{{< feature-state for_k8s_version="v1.32" state="stable" >}}
 
 Ви можете визначити часткову специфікацію контейнера для налагодження як профіль custom у форматі JSON або YAML, та застосувати її з прапорцем `--custom`.
 

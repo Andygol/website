@@ -22,7 +22,7 @@ kubectl apply -k <kustomization_directory>
 
 ## {{% heading "prerequisites" %}}
 
-Встановіть [`kubectl`](/uk/docs/tasks/tools/).
+Встановіть [`kubectl`](/docs/tasks/tools/).
 
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
 
@@ -408,8 +408,10 @@ cat <<EOF >./kustomization.yaml
 namespace: my-namespace
 namePrefix: dev-
 nameSuffix: "-001"
-commonLabels:
-  app: bingo
+labels:
+  - pairs:
+      app: bingo
+    includeSelectors: true
 commonAnnotations:
   oncallPager: 800-555-1212
 resources:
@@ -505,7 +507,11 @@ EOF
 
 #### Кастомізація {#customizing}
 
-Патчі можуть бути використані для застосування різних кастомізацій до Ресурсів. Kustomize підтримує різні механізми патчінгу через `patchesStrategicMerge` та `patchesJson6902`. `patchesStrategicMerge` — це список шляхів до файлів. Кожен файл повинен бути розвʼязаний до [стратегічного обʼєднання патчів](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-api-machinery/strategic-merge-patch.md). Імена всередині патчів повинні відповідати іменам Ресурсів, які вже завантажені. Рекомендується використовувати невеликі патчі, які виконують одну задачу. Наприклад, створіть один патч для збільшення кількості реплік у Deployment та інший патч для встановлення обмеження памʼяті.
+Патчі можуть бути використані для застосування різних кастомізацій до Ресурсів. Kustomize підтримує різні механізми патчів через `StrategicMerge` та `Json6902` за допомогою поля `patches`. `patches` може бути файлом або вбудованим рядком, спрямованим на один або декілька ресурсів.
+
+Поле `patches` містить список застосованих патчів у порядку їхнього зазначення. Патч вибирає ресурси за `group`, `version`, `kind`, `name`, `namespace`, `labelSelector` і `annotationSelector`.
+
+Рекомендується створювати невеликі патчі, які виконують одну задачу. Наприклад, створіть один патч для збільшення номера репліки розгортання, а інший — для встановлення ліміту памʼяті. Цільовий ресурс буде знайдено за допомогою полів `group`, `version`, `kind` і `name` з файлу патчу.
 
 ```shell
 # Створіть файл deployment.yaml
@@ -560,9 +566,9 @@ EOF
 cat <<EOF >./kustomization.yaml
 resources:
 - deployment.yaml
-patchesStrategicMerge:
-- increase_replicas.yaml
-- set_memory.yaml
+patches:
+  - path: increase_replicas.yaml
+  - path: set_memory.yaml
 EOF
 ```
 
@@ -593,7 +599,9 @@ spec:
             memory: 512Mi
 ```
 
-Не всі Ресурси чи поля підтримують стратегічні обʼєднувальні патчі. Для підтримки зміни довільних полів у довільних Ресурсах, Kustomize пропонує застосування [JSON патчів](https://tools.ietf.org/html/rfc6902) через `patchesJson6902`. Для знаходження правильного Ресурсу для Json патчу, потрібно вказати групу, версію, тип та імʼя цього Ресурсу у `kustomization.yaml`. Наприклад, збільшення кількості реплік у обʼєкті Deployment також можна зробити через `patchesJson6902`.
+Не всі Ресурси чи поля підтримують патчі  `strategicMerge`. Для підтримки зміни довільних полів у довільних Ресурсах, Kustomize пропонує застосування [JSON патчів](https://tools.ietf.org/html/rfc6902) через `patchesJson6902`. Щоб знайти правильний Ресурс для патча `Json6902`, обовʼязково потрібно вказати поле `target` у файлі `kustomization.yaml`.
+
+Наприклад, збільшити кількість реплік обʼєкта Deployment можна також за допомогою патчу `Json6902`. Цільовий ресурс знаходиться за допомогою `group`, `version`, `kind` та `name` з поля `target`.
 
 ```shell
 # Створіть файл deployment.yaml
@@ -631,7 +639,7 @@ cat <<EOF >./kustomization.yaml
 resources:
 - deployment.yaml
 
-patchesJson6902:
+patches:
 - target:
     group: apps
     version: v1
@@ -724,7 +732,7 @@ spec:
         - containerPort: 80
 ```
 
-Іноді застосунок, що працює у Podʼі, може потребувати використання значень конфігурації з інших обʼєктів. Наприклад, Pod з обʼєкту Deployment повинен читати відповідне імʼя Service з Env або як аргумент команди. Оскільки імʼя Service може змінюватися через `namePrefix` або `nameSuffix`, додавання імені Service у командний аргумент не рекомендується. Для цього використовується Kustomize, що вводить імʼя Service в контейнери через `vars`.
+Іноді застосунок, що працює у Podʼі, може потребувати використання значень конфігурації з інших обʼєктів. Наприклад, Pod з обʼєкту Deployment повинен читати відповідне імʼя Service з Env або як аргумент команди. Оскільки імʼя Service може змінюватися через `namePrefix` або `nameSuffix`, додавання імені Service у командний аргумент не рекомендується. Для цього використовується Kustomize, що вводить імʼя Service в контейнери через `replacements`.
 
 ```shell
 # Створіть файл deployment.yaml (взявши в лапки роздільник документа)
@@ -746,7 +754,7 @@ spec:
       containers:
       - name: my-nginx
         image: nginx
-        command: ["start", "--host", "$(MY_SERVICE_NAME)"]
+        command: ["start", "--host", "MY_SERVICE_NAME_PLACEHOLDER"]
 EOF
 
 # Створіть файл service.yaml
@@ -773,12 +781,17 @@ resources:
 - deployment.yaml
 - service.yaml
 
-vars:
-- name: MY_SERVICE_NAME
-  objref:
+replacements:
+- source:
     kind: Service
     name: my-nginx
-    apiVersion: v1
+    fieldPath: metadata.name
+  targets:
+  - select:
+      kind: Deployment
+      name: my-nginx
+    fieldPaths:
+    - spec.template.spec.containers.0.command.2
 EOF
 ```
 
@@ -810,7 +823,9 @@ spec:
 
 ## Base та Overlay {#bases-and-overlays}
 
-У Kustomize існують концепції **base** та **overlay**. **Base** — це тека з файлом `kustomization.yaml`, яка містить набір ресурсів та повʼязані налаштування. Base може бути як локальною текою, так і текою з віддаленого репозиторію, якщо присутній файл `kustomization.yaml`. **Overlay** — це тека з файлом `kustomization.yaml`, яка посилається на інші теки з налаштуваннями як на свої `base` компоненти. **Base** не знає про overlay і може використовуватися в кількох overlay. Overlay може мати кілька base та компонувати всі ресурси з base, а також мати власні налаштування поверх.
+У Kustomize існують концепції **base** та **overlay**. **Base** — це тека з файлом `kustomization.yaml`, яка містить набір ресурсів та повʼязані налаштування. Base може бути як локальною текою, так і текою з віддаленого репозиторію, якщо присутній файл `kustomization.yaml`. **Overlay** — це тека з файлом `kustomization.yaml`, яка посилається на інші теки з налаштуваннями як на свої `base` компоненти. **Base** не знає про overlay і може використовуватися в кількох overlay.
+
+Файл `kustomization.yaml` у теці **overlay** може посилатися на декілька `bases`, обʼєднуючи всі ресурси, визначені у цих базах, в єдину конфігурацію. Крім того, він може застосовувати кастомізації поверх цих ресурсів, щоб задовольнити певні вимоги.
 
 Ось приклад base:
 
@@ -916,8 +931,10 @@ EOF
 # Створіть файл kustomization.yaml
 cat <<EOF >./kustomization.yaml
 namePrefix: dev-
-commonLabels:
-  app: my-nginx
+labels:
+  - pairs:
+      app: my-nginx
+    includeSelectors: true
 resources:
 - deployment.yaml
 EOF
@@ -955,28 +972,29 @@ deployment.apps "dev-my-nginx" deleted
 
 ## Перелік елементів Kustomize {#kustomize-feature-list}
 
-| Поле                  | Тип                                                                                                          | Пояснення                                                                         |
+| Поле                  | Тип                                                                                                          | Пояснення                                                                        |
 |-----------------------|--------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| namespace             | string                                                                                                       | додає простір імен до всіх ресурсів                                               |
-| namePrefix            | string                                                                                                       | це значення додається до імен всіх ресурсів                                        |
-| nameSuffix            | string                                                                                                       | це значення додається до кінця імен всіх ресурсів                                  |
-| commonLabels          | map[string]string                                                                                            | мітки, що додаються до всіх ресурсів і селекторів                                 |
-| commonAnnotations     | map[string]string                                                                                            | анотації, що додаються до всіх ресурсів                                           |
-| resources             | []string                                                                                                     | кожний елемент цього списку повинен посилатися на наявний файл конфігурації ресурсів |
-| configMapGenerator    | [][ConfigMapArgs](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/configmapargs.go#L7)    | Кожний елемент цього списку генерує ConfigMap                                      |
-| secretGenerator       | [][SecretArgs](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/secretargs.go#L7)          | Кожний елемент цього списку генерує Secret                                         |
-| generatorOptions      | [GeneratorOptions](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/generatoroptions.go#L7) | Модифікує поведінку всіх генераторів ConfigMap і Secret                           |
-| bases                 | []string                                                                                                     | Кожний елемент цього списку повинен посилатися на теку, що містить файл kustomization.yaml |
-| patchesStrategicMerge | []string                                                                                                     | Кожний елемент цього списку повинен посилатися на стратегічне патч злиття обʼєкта Kubernetes |
-| patchesJson6902       | [][Patch](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/patch.go#L10)                   | Кожний елемент цього списку повинен посилатися на обʼєкт Kubernetes та Json Patch |
-| vars                  | [][Var](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/var.go#L19)                       | Кожний елемент призначений для отримання тексту з поля одного ресурсу              |
-| images                | [][Image](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/image.go#L8)                    | Кожний елемент призначений для зміни імені, тегів і/або дайджесту для одного образу без створення патчів |
-| configurations        | []string                                                                                                     | Кожний елемент цього списку повинен посилатися на файл, що містить [конфігурації перетворювача Kustomize](https://github.com/kubernetes-sigs/kustomize/tree/master/examples/transformerconfigs) |
-| crds                  | []string                                                                                                     | Кожний елемент цього списку повинен посилатися на файл визначення OpenAPI для типів Kubernetes |
+| bases                 | []string                                                                                                     | Кожен запис у цьому списку має вказувати на теку, що містить файл kustomization.yaml |
+| commonAnnotations     | map[string]string                                                                                            | анотації, які додаються до всіх ресурсів                                                |
+| commonLabels          | map[string]string                                                                                            | мітки, які додаються до всіх ресурсів та селекторів                                       |
+| configMapGenerator    | [][ConfigMapArgs](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/configmapargs.go#L7)    | Кожен запис у цьому списку генерує ConfigMap                                     |
+| configurations        | []string                                                                                                     | Кожен запис у цьому списку має вказувати на файл, що містить [конфігурації трансформаторів Kustomize](https://github.com/kubernetes-sigs/kustomize/tree/master/examples/transformerconfigs) |
+| crds                  | []string                                                                                                     | Кожен запис у цьому списку має вказувати на файл визначення OpenAPI для типів Kubernetes |
+| generatorOptions      | [GeneratorOptions](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/generatoroptions.go#L7) | Змінює поведінку всіх генераторів ConfigMap та Secret                             |
+| images                | [][Image](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/image.go#L8)                    | Кожен запис змінює імʼя, теґи та/або дайджест для одного образу без створення патчів |
+| labels                | map[string]string                                                                                            | Додає мітки без автоматичного додавання відповідних селекторів                   |
+| namePrefix            | string                                                                                                       | значення цього поля додається на початок імен всіх ресурсів                      |
+| nameSuffix            | string                                                                                                       | значення цього поля додається в кінець імен всіх ресурсів                        |                               |
+| patchesJson6902       | [][Patch](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/patch.go#L10)                   | Кожен запис у цьому списку має вказувати на обʼєкт Kubernetes та Json Patch      |                         |
+| patchesStrategicMerge | []string                                                                                                     | Кожен запис у цьому списку має вказувати на стратегічний патч злиття обʼєкта Kubernetes |
+| replacements          | [][Replacements](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/replacement.go#L15)      | копіює значення з поля ресурсу в будь-яку кількість зазначених цілей             |
+| resources             | []string                                                                                                     | Кожен запис у цьому списку має вказувати на наявний файл конфігурації ресурсу    |
+| secretGenerator       | [][SecretArgs](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/secretargs.go#L7)          | Кожен запис у цьому списку генерує Secret                                        |
+| vars                  | [][Var](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/var.go#L19)                       | Кожен запис призначений для захоплення тексту з поля одного ресурсу
 
 ## {{% heading "whatsnext" %}}
 
 * [Kustomize](https://github.com/kubernetes-sigs/kustomize)
 * [Книга Kubectl](https://kubectl.docs.kubernetes.io)
-* [Довідник команд Kubectl](/uk/docs/reference/generated/kubectl/kubectl-commands/)
+* [Довідник команд Kubectl](/docs/reference/generated/kubectl/kubectl-commands/)
 * [Довідник API Kubernetes](/docs/reference/generated/kubernetes-api/{{< param "version" >}}/)

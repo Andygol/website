@@ -115,10 +115,10 @@ spec:
         name: log-config
         items:
           - key: log_level
-            path: log_level
+            path: log_level.conf
 ```
 
-ConfigMap `log-config` змонтовано як том, і весь вміст, збережений у його запису `log_level`, змонтовано в Pod за шляхом `/etc/config/log_level`. Зверніть увагу, що цей шлях виводиться з `mountPath` тому та `path` з ключем `log_level`.
+ConfigMap `log-config` змонтовано як том, і весь вміст, збережений у його запису `log_level`, змонтовано в Pod за шляхом `/etc/config/log_level.conf`. Зверніть увагу, що цей шлях виводиться з `mountPath` тому та `path` з ключем `log_level`.
 
 {{< note >}}
 

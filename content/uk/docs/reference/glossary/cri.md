@@ -1,5 +1,5 @@
 ---
-title: Інтерфейс середовища виконання контейнера (CRI)
+title: Інтерфейс середовища виконання контейнера
 id: cri
 date: 2021-11-24
 full_link: /uk/docs/concepts/architecture/cri
@@ -7,6 +7,8 @@ short_description: >
   Протокол для звʼязку між kubelet та локальним середовищем виконання контейнера.
 
 aka:
+- Container Runtime Interface
+- CRI
 tags:
   - fundamental
 ---

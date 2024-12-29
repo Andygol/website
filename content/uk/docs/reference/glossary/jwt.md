@@ -1,5 +1,5 @@
 ---
-title: JSON Web Token (JWT)
+title: JSON Web Token
 id: jwt
 date: 2023-01-17
 full_link: https://www.rfc-editor.org/rfc/rfc7519
@@ -7,6 +7,7 @@ short_description: >
   Засіб представлення вимог для передачі між двома сторонами.
 
 aka:
+- JWT
 tags:
 - security
 - architecture

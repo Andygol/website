@@ -6,6 +6,7 @@ full_link: /uk/docs/concepts/extend-kubernetes/compute-storage-net/device-plugin
 short_description: >
   Програмні розширення для надання Podʼам доступу до пристроїв, які потребують вендор-специфічної ініціалізації чи налаштувань.
 aka:
+- device plugin
 tags:
 - fundamental
 - extension
