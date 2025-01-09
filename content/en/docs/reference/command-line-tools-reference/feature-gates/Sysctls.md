@@ -1,5 +1,4 @@
 ---
-# Removed from Kubernetes
 title: Sysctls
 content_type: feature_gate
 
@@ -19,5 +18,6 @@ stages:
 
 removed: true
 ---
-Enable support for namespaced kernel parameters (sysctls) that can be set for each
-pod. See [sysctls](/docs/tasks/administer-cluster/sysctl-cluster/) for more details.
+Enable support for namespaced kernel parameters (sysctls) that can be set for each pod.
+See [sysctls](/docs/tasks/administer-cluster/sysctl-cluster/) for more details.
+

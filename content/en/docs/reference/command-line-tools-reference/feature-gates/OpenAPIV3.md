@@ -21,3 +21,4 @@ stages:
 removed: true
 ---
 Enables the API server to publish OpenAPI v3.
+

@@ -1,5 +1,4 @@
 ---
-# Removed from Kubernetes
 title: Initializers
 content_type: feature_gate
 
@@ -20,3 +19,4 @@ removed: true
 ---
 Allow asynchronous coordination of object creation using the
 Initializers admission plugin.
+
