@@ -1,5 +1,4 @@
 ---
-# Removed from Kubernetes
 title: Initializers
 content_type: feature_gate
 
@@ -8,7 +7,7 @@ _build:
   render: false
 
 stages:
-  - stage: alpha 
+  - stage: alpha
     defaultValue: false
     fromVersion: "1.7"
     toVersion: "1.13"

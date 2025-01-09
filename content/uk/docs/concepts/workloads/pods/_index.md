@@ -226,7 +226,7 @@ _Probe_ — це діагностика, яку періодично викон
 Для розуміння контексту того, чому Kubernetes обгортає загальний API Pod іншими ресурсами (такими як {{< glossary_tooltip text="StatefulSets" term_id="statefulset" >}} або {{< glossary_tooltip text="Deployments" term_id="deployment" >}}), ви можете прочитати про попередні роботи, включаючи:
 
 * [Aurora](https://aurora.apache.org/documentation/latest/reference/configuration/#job-schema)
-* [Borg](https://research.google.com/pubs/pub43438.html)
+* [Borg](https://research.google/pubs/large-scale-cluster-management-at-google-with-borg/)
 * [Marathon](https://github.com/d2iq-archive/marathon)
 * [Omega](https://research.google/pubs/pub41684/)
 * [Tupperware](https://engineering.fb.com/data-center-engineering/tupperware/).

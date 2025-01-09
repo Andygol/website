@@ -387,7 +387,7 @@ kube-scheduler-simulator.sigs.k8s.io/finalscore-result: >-
 
 ### kube-scheduler-simulator.sigs.k8s.io/prefilter-result
 
-Type: Annotation
+Тип: Annotation
 
 Приклад: `kube-scheduler-simulator.sigs.k8s.io/prebind-result: '{"NodeAffinity":"[\"node-\a"]"}'`
 
@@ -397,7 +397,7 @@ Type: Annotation
 
 ### kube-scheduler-simulator.sigs.k8s.io/prefilter-result-status
 
-Type: Annotation
+Тип: Annotation
 
 Приклад:
 
@@ -412,7 +412,7 @@ kube-scheduler-simulator.sigs.k8s.io/prefilter-result-status: >-
 
 ### kube-scheduler-simulator.sigs.k8s.io/prescore-result
 
-Type: Annotation
+Тип: Annotation
 
 Приклад:
 
@@ -427,7 +427,7 @@ Type: Annotation
 
 ### kube-scheduler-simulator.sigs.k8s.io/reserve-result
 
-Type: Annotation
+Тип: Annotation
 
 Приклад: `kube-scheduler-simulator.sigs.k8s.io/reserve-result: '{"VolumeBinding":"success"}'`
 
@@ -437,7 +437,7 @@ Type: Annotation
 
 ### kube-scheduler-simulator.sigs.k8s.io/result-history
 
-Type: Annotation
+Тип: Annotation
 
 Приклад: `kube-scheduler-simulator.sigs.k8s.io/result-history: '[]'`
 
@@ -447,7 +447,7 @@ Type: Annotation
 
 ### kube-scheduler-simulator.sigs.k8s.io/score-result
 
-Type: Annotation
+Тип: Annotation
 
 ```yaml
     kube-scheduler-simulator.sigs.k8s.io/score-result: >-
@@ -460,7 +460,7 @@ Type: Annotation
 
 ### kube-scheduler-simulator.sigs.k8s.io/selected-node
 
-Type: Annotation
+Тип: Annotation
 
 Приклад: `kube-scheduler-simulator.sigs.k8s.io/selected-node: node-282x7`
 
@@ -1990,6 +1990,106 @@ Kubelet перевіряє D-значення розміру `/proc/sys/kernel/p
 {{< note >}}
 Починаючи з версії 1.16, ця анотація була видалена на користь [Пріоритету Pod](/docs/concepts/scheduling-eviction/pod-priority-preemption/).
 {{< /note >}}
+
+### jobset.sigs.k8s.io/jobset-name
+
+Тип: Label, Annotation
+
+Приклад:  `jobset.sigs.k8s.io/jobset-name: "my-jobset"`
+
+Використовується для: Jobs, Pods
+
+Ця мітка/анотація використовується для зберігання назви JobSet, до якого належить Job або Pod. [JobSet](https://jobset.sigs.k8s.io) — це API розширення, яке ви можете розгорнути у своєму кластері Kubernetes.
+
+### jobset.sigs.k8s.io/replicatedjob-replicas
+
+Тип: Label, Annotation
+
+Приклад: `jobset.sigs.k8s.io/replicatedjob-replicas: "5"`
+
+Використовується для: Jobs, Pods
+
+Ця мітка/анотація вказує на кількість реплік для ReplicatedJob.
+
+### jobset.sigs.k8s.io/replicatedjob-name
+
+Тип: Label, Annotation
+
+Приклад: `jobset.sigs.k8s.io/replicatedjob-name: "my-replicatedjob"`
+
+Використовується для: Jobs, Pods
+
+Ця мітка або анотація зберігає імʼя реплікованого завдання, частиною якого є цей Job або Pod.
+
+### jobset.sigs.k8s.io/job-index
+
+Тип: Label, Annotation
+
+Приклад: `jobset.sigs.k8s.io/job-index: "0"`
+
+Використовується для: Jobs, Pods
+
+Ця мітка/анотація встановлюється контролером JobSet для дочірніх Jobs і Pods. Вона містить індекс репліки Job у межах батьківського ReplicatedJob.
+
+### jobset.sigs.k8s.io/job-key
+
+Тип: Label, Annotation
+
+Приклад: `jobset.sigs.k8s.io/job-key: "0f1e93893c4cb372080804ddb9153093cb0d20cefdd37f653e739c232d363feb"`
+
+Використовується для: Jobs, Pods
+
+Контролер JobSet встановлює цю мітку (а також анотацію з тим самим ключем) на дочірніх завданнях JobSet і Pods. Значенням є хеш SHA256 імені Job у просторі імен.
+
+### alpha.jobset.sigs.k8s.io/exclusive-topology
+
+Тип: Annotation
+
+Приклад: `alpha.jobset.sigs.k8s.io/exclusive-topology: "zone"`
+
+Використовується для: JobSets, Jobs
+
+Ви можете встановити цю мітку/анотацію на [JobSet] (https://jobset.sigs.k8s.io), щоб забезпечити ексклюзивне розміщення завдань для кожної топологічної групи. Ви також можете визначити цю мітку або анотацію на тиражованому шаблоні завдання. Щоб дізнатися більше, прочитайте документацію до JobSet.
+
+### alpha.jobset.sigs.k8s.io/node-selector
+
+Тип: Annotation
+
+Приклад: `alpha.jobset.sigs.k8s.io/node-selector: "true"`
+
+Використовується для: Jobs, Pods
+
+Ця мітка/анотація може бути застосована до JobSet. Коли вона встановлена, контролер JobSet модифікує Jobs і відповідні їм Pods, додаючи селектори вузлів і толерації. Це забезпечує ексклюзивне розміщення завдань в домені топології, обмежуючи планування цих Podʼів конкретними вузлами на основі стратегії.
+
+### alpha.jobset.sigs.k8s.io/namespaced-job
+
+Тип: Label
+
+Приклад: `alpha.jobset.sigs.k8s.io/namespaced-job: "default_myjobset-replicatedjob-0"`
+
+Використовується для: Nodes
+
+Ця мітка встановлюється на вузлах вручну або автоматично (наприклад, кластерним автомасштабувальником). Коли `alpha.jobset.sigs.k8s.io/node-selector` встановлено у `"true"`, контролер JobSet додає nodeSelector до цієї мітки вузла (разом з толерантністю до позначення `alpha.jobset.sigs.k8s.io/no-schedule`, описаної далі).
+
+### alpha.jobset.sigs.k8s.io/no-schedule
+
+Тип: Taint
+
+Приклад: `alpha.jobset.sigs.k8s.io/no-schedule: "NoSchedule"`
+
+Використовується для: Nodes
+
+Ця позначка встановлюється або вручну, або автоматично (наприклад, кластерним автомасштабувальником) на вузлах. Коли `alpha.jobset.sigs.k8s.io/node-selector` встановлено у `"true"`, контролер JobSet додає толерантність до цієї позначки вузла (разом із селектором вузла до мітки `alpha.jobset.sigs.k8s.io/namespaced-job`, описаної раніше).
+
+### jobset.sigs.k8s.io/coordinator
+
+Тип: Annotation, Label
+
+Приклад: `jobset.sigs.k8s.io/coordinator: "myjobset-workers-0-0.headless-svc"`
+
+Використовується для: Jobs, Pods
+
+Ця анотація/мітка використовується на Jobs та Pods для зберігання стабільної точки доступу, де можна знайти pod координатора, якщо у специфікації [JobSet](https://jobset.sigs.k8s.io) визначено поле `.spec.coordinator`.
 
 ## Анотації, що використовуються для аудиту {#annotations-used-for-audit}
 

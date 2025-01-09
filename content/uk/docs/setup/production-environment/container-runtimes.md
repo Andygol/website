@@ -152,7 +152,7 @@ Kubernetes [починаючи з v1.26](/blog/2022/11/18/upcoming-changes-in-ku
 [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
   ...
   [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
-   
+
 
  SystemdCgroup = true
 ```
@@ -162,7 +162,7 @@ Kubernetes [починаючи з v1.26](/blog/2022/11/18/upcoming-changes-in-ku
 {{< note >}}
 Якщо ви встановили containerd за допомогою менеджера пакунків (наприклад, RPM або `.deb`, ви можете знайти, що втулок інтеграції CRI є типово вимкненим.
 
-Вам потрібно увімкнути підтримку CRI для того, щоб мати можливість використовувати containerd в Kubernetes. Переконайтеся, що `cri` немає в `disabled_plugins` у файлі `/etc/containerd/config.toml`; якщо вносили зміни до цього файлу, перезапустіть `containerd`. 
+Вам потрібно увімкнути підтримку CRI для того, щоб мати можливість використовувати containerd в Kubernetes. Переконайтеся, що `cri` немає в `disabled_plugins` у файлі `/etc/containerd/config.toml`; якщо вносили зміни до цього файлу, перезапустіть `containerd`.
 
 Якщо ви стикаєтесь з постійними збоями після початкового встановлення кластера або після встановлення CNI, скоріш за все конфігурація containerd отримана з пакунка містить несумісні налаштування. Зважте на перевстановлення налаштувань containerd,  командою `containerd config default > /etc/containerd/config.toml` (див. [getting-strated.md](https://github.com/containerd/containerd/blob/main/docs/getting-started.md#advanced-topics) і потім внесіть зміни в налаштування, як вказано вище.
 {{< /note >}}
@@ -183,7 +183,7 @@ sudo systemctl restart containerd
 
 ```toml
 [plugins."io.containerd.grpc.v1.cri"]
-  sandbox_image = "registry.k8s.io/pause:3.2"
+  sandbox_image = "registry.k8s.io/pause:3.10"
 ```
 
 Можливо, вам доведеться також перезапустити `containerd`, якщо ви оновили файл конфігурації: `systemctl restart containerd`.
@@ -216,7 +216,7 @@ cgroup_manager = "cgroupfs"
 
 ```toml
 [crio.image]
-pause_image="registry.k8s.io/pause:3.6"
+pause_image="registry.k8s.io/pause:3.10"
 ```
 
 Цей параметр конфігурації підтримує перезавантаження конфігурації в реальному часі для застосування цих змін: `systemctl reload crio` або відсилання сигналу `SIGHUP` процесу `crio`.

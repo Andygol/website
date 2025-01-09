@@ -1,5 +1,4 @@
 ---
-# Removed from Kubernetes
 title: Accelerators
 content_type: feature_gate
 
@@ -8,7 +7,7 @@ _build:
   render: false
 
 stages:
-  - stage: alpha 
+  - stage: alpha
     defaultValue: false
     fromVersion: "1.6"
     toVersion: "1.10"
@@ -18,4 +17,5 @@ stages:
 
 removed: true
 ---
-Надавав ранню форму втулка для ввімкнення підтримки графічного процесора Nvidia під час використання Docker Engine; більше не доступний. Див. [Втулки пристроїв](/uk/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/) для альтернатив.
+
+Надавав ранню форму втулка для ввімкнення підтримки графічного процесора Nvidia під час використання Docker Engine; більше не доступний. Див. [Втулки пристроїв](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/) для альтернатив.

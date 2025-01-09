@@ -20,7 +20,6 @@ weight: 60
 
 ## Налаштування {#configuration}
 
-* [Приклад: Налаштування Java-мікросервісу](/docs/tutorials/configuration/configure-java-microservice/)
 * [Налаштування Redis за допомогою ConfigMap](/docs/tutorials/configuration/configure-redis-using-configmap/)
 
 ## Створення Podʼів {#authoring-pods}

@@ -8,15 +8,15 @@ _build:
   render: false
 
 stages:
-  - stage: beta 
+  - stage: beta
     defaultValue: true
     fromVersion: "1.11"
     toVersion: "1.20"
   - stage: stable
     defaultValue: true
     fromVersion: "1.21"
-    toVersion: "1.22"    
+    toVersion: "1.22"
 
 removed: true
 ---
-Вмикання підтримки параметрів ядра у просторі імен (sysctls), які можна задавати для кожного з Podʼів. Докладні відомості наведено у [sysctls](/uk/docs/tasks/administer-cluster/sysctl-cluster/).
+Вмикання підтримки параметрів ядра у просторі імен (sysctls), які можна задавати для кожного з Podʼів. Докладні відомості наведено у [sysctls](/docs/tasks/administer-cluster/sysctl-cluster/).
