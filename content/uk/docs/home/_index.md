@@ -1,6 +1,4 @@
 ---
-approvers:
-- chenopis
 title: Документація Kubernetes
 noedit: true
 cid: docsHome
@@ -55,10 +53,6 @@ cards:
   button: "Навчання"
   button_path: "/training"
 - name: download
-  title: Отримання Kubernetes
-  description: Встановіть чи оновіть Kubernetes до останньої версії.
-  button: Завантажити
-  button_path: /releases/download
   title: Отримання Kubernetes
   description: Встановіть чи оновіть Kubernetes до останньої версії.
   button: Завантажити
