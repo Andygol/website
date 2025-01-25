@@ -58,16 +58,16 @@ Kubernetes розрізняє поняття облікового запису �
 
 ### Перевірка та інспекція приватних заявок {#verifying-and-inspecting-private-claims}
 
-API `TokenReview` може використовуватися для перевірки та вилучення приватних заявок з токена:
+API TokenReview може використовуватися для перевірки та вилучення приватних заявок з токена:
 
 1. Спочатку припустимо, що у вас є Pod з назвою `test-pod` і службовий обліковий запис з назвою `my-sa`.
-2. Створіть токен, привʼязаний до цього Pod:
+1. Створіть токен, привʼязаний до цього Pod:
 
    ```shell
    kubectl create token my-sa --bound-object-kind="Pod" --bound-object-name="test-pod"
    ```
 
-3. Скопіюйте цей токен у новий файл з назвою `tokenreview.yaml`:
+1. Скопіюйте цей токен у новий файл з назвою `tokenreview.yaml`:
 
    ```yaml
    apiVersion: authentication.k8s.io/v1
@@ -76,48 +76,48 @@ API `TokenReview` може використовуватися для перев�
      token: <токен з кроку 2>
    ```
 
-4. Надішліть цей ресурс до apiserver для перевірки:
+1. Надішліть цей ресурс до apiserver для перевірки:
 
    ```shell
    kubectl create -o yaml -f tokenreview.yaml # ми використовуємо '-o yaml', щоб можна було перевірити вихідні дані
    ```
 
-Ви повинні побачити вихідні дані, подібні до наведених нижче:
+   Ви повинні побачити вихідні дані, подібні до наведених нижче:
 
-```yaml
-apiVersion: authentication.k8s.io/v1
-kind: TokenReview
-metadata:
-  creationTimestamp: null
-spec:
-  token: <token>
-status:
-  audiences:
-  - https://kubernetes.default.svc.cluster.local
-  authenticated: true
-  user:
-    extra:
-      authentication.kubernetes.io/credential-id:
-      - JTI=7ee52be0-9045-4653-aa5e-0da57b8dccdc
-      authentication.kubernetes.io/node-name:
-      - kind-control-plane
-      authentication.kubernetes.io/node-uid:
-      - 497e9d9a-47aa-4930-b0f6-9f2fb574c8c6
-      authentication.kubernetes.io/pod-name:
-      - test-pod
-      authentication.kubernetes.io/pod-uid:
-      - e87dbbd6-3d7e-45db-aafb-72b24627dff5
-    groups:
-    - system:serviceaccounts
-    - system:serviceaccounts:default
-    - system:authenticated
-    uid: f8b4161b-2e2b-11e9-86b7-2afc33b31a7e
-    username: system:serviceaccount:default:my-sa
-```
+   ```yaml
+   apiVersion: authentication.k8s.io/v1
+   kind: TokenReview
+   metadata:
+     creationTimestamp: null
+   spec:
+     token: <token>
+   status:
+     audiences:
+     - https://kubernetes.default.svc.cluster.local
+     authenticated: true
+     user:
+       extra:
+         authentication.kubernetes.io/credential-id:
+         - JTI=7ee52be0-9045-4653-aa5e-0da57b8dccdc
+         authentication.kubernetes.io/node-name:
+         - kind-control-plane
+         authentication.kubernetes.io/node-uid:
+         - 497e9d9a-47aa-4930-b0f6-9f2fb574c8c6
+         authentication.kubernetes.io/pod-name:
+         - test-pod
+         authentication.kubernetes.io/pod-uid:
+         - e87dbbd6-3d7e-45db-aafb-72b24627dff5
+       groups:
+       - system:serviceaccounts
+       - system:serviceaccounts:default
+       - system:authenticated
+       uid: f8b4161b-2e2b-11e9-86b7-2afc33b31a7e
+       username: system:serviceaccount:default:my-sa
+   ```
 
-{{< note >}}
-Попри використання `kubectl create -f` для створення цього ресурсу, і визначення його схожим чином з іншими типами ресурсів у Kubernetes, TokenReview є спеціальним типом і kube-apiserver насправді не зберігає обʼєкт TokenReview в etcd. Тому `kubectl get tokenreview` не є допустимою командою.
-{{< /note >}}
+   {{< note >}}
+   Попри використання `kubectl create -f` для створення цього ресурсу, і визначення його схожим чином з іншими типами ресурсів у Kubernetes, TokenReview є спеціальним типом і kube-apiserver насправді не зберігає обʼєкт TokenReview в etcd. Тому `kubectl get tokenreview` не є допустимою командою.
+   {{< /note >}}
 
 #### Схема для приватних вимог службового запису {#schema-for-service-account-private-claims}
 

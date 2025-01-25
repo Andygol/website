@@ -3,13 +3,13 @@ kind: PodSecurityPolicy
 metadata:
   name: restricted
   annotations:
-    # docker/default identifies a profile for seccomp, but it is not particularly tied to the Docker runtime
+    # docker/default визначає профіль для seccomp, але він не має особливої привʼязки до середовища виконання Docker
     seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default,runtime/default'
     apparmor.security.beta.kubernetes.io/allowedProfileNames: 'runtime/default'
     apparmor.security.beta.kubernetes.io/defaultProfileName:  'runtime/default'
 spec:
   privileged: false
-  # Required to prevent escalations to root.
+  # Необхідно для запобігання ескалації в root.
   allowPrivilegeEscalation: false
   requiredDropCapabilities:
     - ALL
@@ -20,7 +20,7 @@ spec:
     - 'projected'
     - 'secret'
     - 'downwardAPI'
-    # Assume that ephemeral CSI drivers & persistentVolumes set up by the cluster admin are safe to use.
+    # Припустимо, що ефемерні драйвери CSI та persistentVolumes, налаштовані адміністратором кластера, безпечні для використання.
     - 'csi'
     - 'persistentVolumeClaim'
     - 'ephemeral'
@@ -28,21 +28,21 @@ spec:
   hostIPC: false
   hostPID: false
   runAsUser:
-    # Require the container to run without root privileges.
+    # Вимагає запуску контейнера без привілеїв root.
     rule: 'MustRunAsNonRoot'
   seLinux:
-    # This policy assumes the nodes are using AppArmor rather than SELinux.
+    # Ця політика передбачає, що вузли використовують AppArmor, а не SELinux.
     rule: 'RunAsAny'
   supplementalGroups:
     rule: 'MustRunAs'
     ranges:
-      # Forbid adding the root group.
+      # Заборонити додавання до групи root.
       - min: 1
         max: 65535
   fsGroup:
     rule: 'MustRunAs'
     ranges:
-      # Forbid adding the root group.
+      # Заборонити додавання до групи root.
       - min: 1
         max: 65535
   readOnlyRootFilesystem: false

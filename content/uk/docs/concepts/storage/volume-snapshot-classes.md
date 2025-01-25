@@ -6,7 +6,7 @@ weight: 61 # just after volume snapshots
 
 <!-- overview -->
 
-У цьому документі описано концепцію VolumeSnapshotClass в Kubernetes. Рекомендується мати відомості про [знімки томів](/uk/docs/concepts/storage/volume-snapshots/) та [класи сховищ](/uk/docs/concepts/storage/storage-classes).
+У цьому документі описано концепцію VolumeSnapshotClass в Kubernetes. Рекомендується мати відомості про [знімки томів](/docs/concepts/storage/volume-snapshots/) та [класи сховищ](/docs/concepts/storage/storage-classes).
 
 <!-- body -->
 
@@ -48,13 +48,23 @@ deletionPolicy: Delete
 parameters:
 ```
 
+Якщо існує декілька драйверів CSI, для кожного з них можна вказати стандартний VolumeSnapshotClass.
+
+### Залежності VolumeSnapshotClass  {#volumesnapshotclass-dependencies}
+
+Коли ви створюєте VolumeSnapshot без зазначення VolumeSnapshotClass, Kubernetes автоматично вибирає стандартний VolumeSnapshotClass, який має CSI-драйвер, що відповідає CSI-драйверу класу зберігання PVC.
+
+Така поведінка дозволяє співіснувати у кластері декільком стандартним обʼєктам VolumeSnapshotClass, якщо кожен з них повʼязаний з унікальним драйвером CSI.
+
+Завжди переконайтеся, що для кожного драйвера CSI існує лише один типовий VolumeSnapshotClass для кожного драйвера CSI. Якщо за допомогою одного драйвера CSI буде створено декілька стандартних об'єктів VolumeSnapshotClass, створення VolumeSnapshot не вдасться, оскільки Kubernetes не зможе визначити, який саме обʼєкт слід використати.
+
 ### Driver
 
 Класи знімків томів мають власника, який визначає, який CSI втулок тому використовується для виділення VolumeSnapshots. Це поле обовʼязкове.
 
 ### DeletionPolicy
 
-Класи знімків томів мають [DeletionPolicy](/uk/docs/concepts/storage/volume-snapshots/#delete). Вона дозволяє налаштувати, що відбудеться з VolumeSnapshotContent, коли буде видалено обʼєкт VolumeSnapshot, з яким він повʼязаний. DeletionPolicy класу знімків томів може бути або `Retain`, або `Delete`. Це поле обовʼязкове.
+Класи знімків томів мають [DeletionPolicy](/docs/concepts/storage/volume-snapshots/#delete). Вона дозволяє налаштувати, що відбудеться з VolumeSnapshotContent, коли буде видалено обʼєкт VolumeSnapshot, з яким він повʼязаний. DeletionPolicy класу знімків томів може бути або `Retain`, або `Delete`. Це поле обовʼязкове.
 
 Якщо DeletionPolicy має значення `Delete`, тоді разом з обʼєктом VolumeSnapshotContent буде видалено знімок тому у сховищі. Якщо DeletionPolicy має значення `Retain`, то знімок тому та VolumeSnapshotContent залишаються.
 

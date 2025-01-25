@@ -6,7 +6,7 @@ weight: 20
 
 <!-- overview -->
 
-Ви можете обмежити {{< glossary_tooltip text="Pod" term_id="pod" >}} так, щоб він був _обмежений_ для запуску на конкретних {{< glossary_tooltip text="вузлах" term_id="node" >}}, або _віддавав перевагу_ запуску на певних вузлах. Існують кілька способів як це  зробити, а рекомендовані підходи використовують усі [селектори міток](/uk/docs/concepts/overview/working-with-objects/labels/) для полегшення вибору. Зазвичай вам не потрібно встановлювати жодні обмеження такого роду; {{< glossary_tooltip text="планувальник" term_id="kube-scheduler" >}} автоматично робить розумне розміщення (наприклад, розподіл Podʼів по вузлах так, щоб не розміщувати Podʼи на вузлі з недостатньою кількістю вільних ресурсів). Однак є деякі обставини, коли ви можете контролювати, на якому вузлі розгортається Pod, наприклад, щоб переконатися, що Pod потрапляє на вузол з прикріпленим до нього SSD, або спільно розміщувати Podʼи з двох різних служб, які багато спілкуються в одній зоні доступності.
+Ви можете обмежити {{< glossary_tooltip text="Pod" term_id="pod" >}} так, щоб він був _обмежений_ для запуску на конкретних {{< glossary_tooltip text="вузлах" term_id="node" >}}, або _віддавав перевагу_ запуску на певних вузлах. Існують кілька способів як це  зробити, а рекомендовані підходи використовують усі [селектори міток](/docs/concepts/overview/working-with-objects/labels/) для полегшення вибору. Зазвичай вам не потрібно встановлювати жодні обмеження такого роду; {{< glossary_tooltip text="планувальник" term_id="kube-scheduler" >}} автоматично робить розумне розміщення (наприклад, розподіл Podʼів по вузлах так, щоб не розміщувати Podʼи на вузлі з недостатньою кількістю вільних ресурсів). Однак є деякі обставини, коли ви можете контролювати, на якому вузлі розгортається Pod, наприклад, щоб переконатися, що Pod потрапляє на вузол з прикріпленим до нього SSD, або спільно розміщувати Podʼи з двох різних служб, які багато спілкуються в одній зоні доступності.
 
 <!-- body -->
 
@@ -19,7 +19,7 @@ weight: 20
 
 ## Мітки вузлів {#built-in-node-labels}
 
-Як і багато інших обʼєктів Kubernetes, вузли мають [мітки](/uk/docs/concepts/overview/working-with-objects/labels/). Ви можете [додавати мітки вручну](/uk/docs/tasks/configure-pod-container/assign-pods-nodes/#add-a-label-to-a-node). Kubernetes також заповнює [стандартний набір міток](/uk/docs/reference/node/node-labels/) на всіх вузлах кластера.
+Як і багато інших обʼєктів Kubernetes, вузли мають [мітки](/docs/concepts/overview/working-with-objects/labels/). Ви можете [додавати мітки вручну](/docs/tasks/configure-pod-container/assign-pods-nodes/#add-a-label-to-a-node). Kubernetes також заповнює [стандартний набір міток](/docs/reference/node/node-labels/) на всіх вузлах кластера.
 
 {{<note>}}
 Значення цих міток специфічне для хмарного середовища і не може бути надійним. Наприклад, значення `kubernetes.io/hostname` може бути таким самим, як імʼя вузла у деяких середовищах, і різним в інших середовищах.
@@ -31,18 +31,18 @@ weight: 20
 
 Якщо ви використовуєте мітки для ізоляції вузлів, обирайте ключі міток, які {{<glossary_tooltip text="kubelet" term_id="kubelet">}} не може змінювати. Це заважає скомпрометованому вузлу встановлювати ці мітки на себе, щоб планувальник планував навантаження на скомпрометований вузол.
 
-Втулок допуску [`NodeRestriction`](/uk/docs/reference/access-authn-authz/admission-controllers/#noderestriction) перешкоджає kubelet встановлювати або змінювати мітки з префіксом `node-restriction.kubernetes.io/`.
+Втулок допуску [`NodeRestriction`](/docs/reference/access-authn-authz/admission-controllers/#noderestriction) перешкоджає kubelet встановлювати або змінювати мітки з префіксом `node-restriction.kubernetes.io/`.
 
 Щоб скористатися цим префіксом міток для ізоляції вузлів:
 
-1. Переконайтеся, що ви використовуєте [авторизатор вузлів](/uk/docs/reference/access-authn-authz/node/) і _ввімкнули_ втулок допуску `NodeRestriction`.
+1. Переконайтеся, що ви використовуєте [авторизатор вузлів](/docs/reference/access-authn-authz/node/) і _ввімкнули_ втулок допуску `NodeRestriction`.
 2. Додайте мітки з префіксом `node-restriction.kubernetes.io/` на ваші вузли, і використовуйте ці мітки у ваших [селекторах вузлів](#nodeselector). Наприклад, `example.com.node-restriction.kubernetes.io/fips=true` або `example.com.node-restriction.kubernetes.io/pci-dss=true`.
 
 ## Вибір вузла з використанням `nodeSelector` {#nodeselector}
 
 `nodeSelector` є найпростішим рекомендованим способом обмеження вибору вузла. Ви можете додати поле `nodeSelector` до специфікації вашого Podʼа і вказати [мітки вузла](#built-in-node-labels), які має мати цільовий вузол. Kubernetes розміщує Pod лише на тих вузлах, які мають всі мітки, які ви вказали.
 
-Дивіться [Призначення Podʼів на вузли](/uk/docs/tasks/configure-pod-container/assign-pods-nodes) для отримання додаткової інформації.
+Дивіться [Призначення Podʼів на вузли](/docs/tasks/configure-pod-container/assign-pods-nodes) для отримання додаткової інформації.
 
 ## Спорідненість та антиспорідненість {#affinity-and-anti-affinity}
 
@@ -83,7 +83,7 @@ weight: 20
 
 Прочитайте розділ [Оператори](#operators), щоб дізнатися більше про те, як вони працюють.
 
-`NotIn` та `DoesNotExist` дозволяють визначати поведінку антиспорідненості. Альтернативно, ви можете використовувати [node taints](/uk/docs/concepts/scheduling-eviction/taint-and-toleration/) для відштовхування Podʼів від конкретних вузлів.
+`NotIn` та `DoesNotExist` дозволяють визначати поведінку антиспорідненості. Альтернативно, ви можете використовувати [node taints](/docs/concepts/scheduling-eviction/taint-and-toleration/) для відштовхування Podʼів від конкретних вузлів.
 
 {{<note>}}
 Якщо ви вказуєте як `nodeSelector`, так і `nodeAffinity`, _обидва_ вони повинні задовольнятися для того, щоб Pod був запланований на вузол.
@@ -93,7 +93,7 @@ weight: 20
 Якщо ви вказуєте кілька виразів в одному полі `matchExpressions`, повʼязаному з умовою в `nodeSelectorTerms`, то Pod може бути запланований на вузол лише в тому випадку, якщо всі вирази задовольняються (вирази зʼєднуються логічним AND).
 {{</note>}}
 
-Дивіться [Призначення Podʼів вузлам з використанням Node Affinity](/uk/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/) для отримання додаткової інформації.
+Дивіться [Призначення Podʼів вузлам з використанням Node Affinity](/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/) для отримання додаткової інформації.
 
 ### Вага спорідненості вузла {#node-affinity-weight}
 
@@ -115,7 +115,7 @@ weight: 20
 
 {{< feature-state for_k8s_version="v1.20" state="beta" >}}
 
-При налаштуванні кількох [профілів планування](/uk/docs/reference/scheduling/config/#multiple-profiles) ви можете повʼязати профіль зі спорідненістю вузла, що є корисним, якщо профіль застосовується лише до певного набору вузлів. Для цього додайте `addedAffinity` до поля `args` втулка [`NodeAffinity`](/uk/docs/reference/scheduling/config/#scheduling-plugins) у [конфігурації планувальника](/uk/docs/reference/scheduling/config/). Наприклад:
+При налаштуванні кількох [профілів планування](/docs/reference/scheduling/config/#multiple-profiles) ви можете повʼязати профіль зі спорідненістю вузла, що є корисним, якщо профіль застосовується лише до певного набору вузлів. Для цього додайте `addedAffinity` до поля `args` втулка [`NodeAffinity`](/docs/reference/scheduling/config/#scheduling-plugins) у [конфігурації планувальника](/docs/reference/scheduling/config/). Наприклад:
 
 ```yaml
 apiVersion: kubescheduler.config.k8s.io/v1beta3
@@ -142,7 +142,7 @@ profiles:
 Оскільки `addedAffinity` не є видимим для кінцевих користувачів, його поведінка може бути неочікуваною для них. Використовуйте мітки вузлів, які мають чіткий взаємозвʼязок з іменем профілю планування.
 
 {{< note >}}
-Контролер DaemonSet, який [створює Podʼи для DaemonSet](/uk/docs/concepts/workloads/controllers/daemonset/#how-daemon-pods-are-scheduled), не підтримує профілі планування. Коли контролер DaemonSet створює Podʼи, стандартний планувальник Kubernetes розміщує ці Podʼи та дотримується будь-яких правил `nodeAffinity` в контролері DaemonSet.
+Контролер DaemonSet, який [створює Podʼи для DaemonSet](/docs/concepts/workloads/controllers/daemonset/#how-daemon-pods-are-scheduled), не підтримує профілі планування. Коли контролер DaemonSet створює Podʼи, стандартний планувальник Kubernetes розміщує ці Podʼи та дотримується будь-яких правил `nodeAffinity` в контролері DaemonSet.
 {{< /note >}}
 
 ### Між-Podʼова спорідненість та антиспорідненість {#inter-pod-affinity-anti-affinity}
@@ -151,9 +151,9 @@ profiles:
 
 Правила між-Podʼової спорідненості та антиспорідненості мають наступний вигляд: "цей Pod повинен (або, у випадку антиспорідненості, не повинен) працювати у X, якщо на цьому X вже працюють один або декілька Podʼів, які задовольняють правилу Y", де X є областю топології, такою як вузол, стійка, зона або регіон постачальника хмарних послуг, або щос подібне, а Y — це правило, яке Kubernetes намагається задовольнити.
 
-Ви виражаєте ці правила (Y) як [селектори міток](/uk/docs/concepts/overview/working-with-objects/labels/#label-selectors) з опційним повʼязаним списком просторів імен. Podʼи є обʼєктами з простором імен в Kubernetes, тому мітки Podʼів також неявно мають простори імен. Будь-які селектори міток для міток Podʼа повинні вказувати простори імен, в яких Kubernetes має переглядати ці мітки.
+Ви виражаєте ці правила (Y) як [селектори міток](/docs/concepts/overview/working-with-objects/labels/#label-selectors) з опційним повʼязаним списком просторів імен. Podʼи є обʼєктами з простором імен в Kubernetes, тому мітки Podʼів також неявно мають простори імен. Будь-які селектори міток для міток Podʼа повинні вказувати простори імен, в яких Kubernetes має переглядати ці мітки.
 
-Ви виражаєте область топології (X), використовуючи `topologyKey`, який є ключем для мітки вузла, яку система використовує для позначення домену. Для прикладу дивіться у [Відомі мітки, анотації та позначення](/uk/docs/reference/labels-annotations-taints/).
+Ви виражаєте область топології (X), використовуючи `topologyKey`, який є ключем для мітки вузла, яку система використовує для позначення домену. Для прикладу дивіться у [Відомі мітки, анотації та позначення](/docs/reference/labels-annotations-taints/).
 
 {{< note >}}
 Між-Podʼові спорідненість та антиспорідненість потребують значних обсягів обчислень, що може значно сповільнити планування великих кластерів. Ми не рекомендуємо їх використовувати в кластерах розміром більше декількох сотень вузлів.
@@ -190,9 +190,9 @@ podAntiAffinity` в специфікації Podʼа.
 
 У цьому прикладі визначено одне правило спорідненості Podʼа та одне правило антиспорідненості Podʼа. Правило спорідненості Podʼа використовує "hard" `requiredDuringSchedulingIgnoredDuringExecution`, тоді як правило антиспорідненості використовує "soft" `preferredDuringSchedulingIgnoredDuringExecution`.
 
-Правило спорідненості вказує, що планувальник може розмістити Pod лише на вузлі, який належить до певної [зони](/uk/docs/concepts/scheduling-eviction/topology-spread-constraints/), де інші Podʼи мають мітку `security=S1`. Наприклад, якщо у нас є кластер із призначеною зоною, скажімо, "Zone V", що складається з вузлів з міткою `topology.kubernetes.io/zone=V`, планувальник може призначити Pod на будь-який вузол у Zone V, якщо принаймні один Pod у Zone V вже має мітку `security=S1`. Зворотно, якщо в Zone V немає Podʼів з мітками `security=S1`, планувальник не призначить Pod з прикладц ні на один вузол в цій зоні.
+Правило спорідненості вказує, що планувальник може розмістити Pod лише на вузлі, який належить до певної [зони](/docs/concepts/scheduling-eviction/topology-spread-constraints/), де інші Podʼи мають мітку `security=S1`. Наприклад, якщо у нас є кластер із призначеною зоною, скажімо, "Zone V", що складається з вузлів з міткою `topology.kubernetes.io/zone=V`, планувальник може призначити Pod на будь-який вузол у Zone V, якщо принаймні один Pod у Zone V вже має мітку `security=S1`. Зворотно, якщо в Zone V немає Podʼів з мітками `security=S1`, планувальник не призначить Pod з прикладц ні на один вузол в цій зоні.
 
-Правило антиспорідненості вказує, що планувальник повинен уникати призначення Podʼа на вузол, якщо цей вузол належить до певної [зони](/uk/docs/concepts/scheduling-eviction/topology-spread-constraints/), де інші Podʼи мають мітку `security=S2`. Наприклад, якщо у нас є кластер із призначеною зоною, скажімо, "Zone R", що складається з вузлів з міткою `topology.kubernetes.io/zone=R`, планувальник повинен уникати призначення Podʼа на будь-який вузол у Zone R, якщо принаймні один Pod у Zone R вже має мітку `security=S2`. Зворотно, правило антиспорідненості не впливає на планування у Zone R, якщо немає Podʼів з мітками `security=S2`.
+Правило антиспорідненості вказує, що планувальник повинен уникати призначення Podʼа на вузол, якщо цей вузол належить до певної [зони](/docs/concepts/scheduling-eviction/topology-spread-constraints/), де інші Podʼи мають мітку `security=S2`. Наприклад, якщо у нас є кластер із призначеною зоною, скажімо, "Zone R", що складається з вузлів з міткою `topology.kubernetes.io/zone=R`, планувальник повинен уникати призначення Podʼа на будь-який вузол у Zone R, якщо принаймні один Pod у Zone R вже має мітку `security=S2`. Зворотно, правило антиспорідненості не впливає на планування у Zone R, якщо немає Podʼів з мітками `security=S2`.
 
 Щоб ближче ознайомитися з прикладами спорідненості та антиспорідненості Podʼів, зверніться до [проєктної документації](https://git.k8s.io/design-proposals-archive/scheduling/podaffinity.md).
 
@@ -219,7 +219,7 @@ podAntiAffinity` в специфікації Podʼа.
 
 {{< note >}}
 <!-- UPDATE THIS WHEN PROMOTING TO STABLE -->
-Поле `matchLabelKeys` знаходиться на рівні бета-версії та є стандартно увімкненим в Kubernetes {{< skew currentVersion >}}. Якщо ви бажаєте його вимкнути, вам потрібно зробити це явним чином за допомогою вимкнення [функціональної можливості](/uk/docs/reference/command-line-tools-reference/feature-gates/)  `MatchLabelKeysInPodAffinity`.
+Поле `matchLabelKeys` знаходиться на рівні бета-версії та є стандартно увімкненим в Kubernetes {{< skew currentVersion >}}. Якщо ви бажаєте його вимкнути, вам потрібно зробити це явним чином за допомогою вимкнення [функціональної можливості](/docs/reference/command-line-tools-reference/feature-gates/)  `MatchLabelKeysInPodAffinity`.
 {{< /note >}}
 
 У Kubernetes є опціональне поле `matchLabelKeys` для спорідненості або антиспорідненості Podʼа. Це поле вказує ключі для міток, які повинні відповідати міткам вхідного Podʼа під час задоволення спорідненості (антиспорідненості) Podʼа.
@@ -260,7 +260,7 @@ spec:
 
 {{< note >}}
 <!-- UPDATE THIS WHEN PROMOTING TO STABLE -->
-Поле `mismatchLabelKeys` знаходиться на рівні бета-версії та є стандартно увімкненим в Kubernetes {{< skew currentVersion >}}. Якщо ви бажаєте його вимкнути, вам потрібно зробити це явним чином за допомогою вимкнення [функціональної можливості](/uk/docs/reference/command-line-tools-reference/feature-gates/) `MatchLabelKeysInPodAffinity`.
+Поле `mismatchLabelKeys` знаходиться на рівні бета-версії та є стандартно увімкненим в Kubernetes {{< skew currentVersion >}}. Якщо ви бажаєте його вимкнути, вам потрібно зробити це явним чином за допомогою вимкнення [функціональної можливості](/docs/reference/command-line-tools-reference/feature-gates/) `MatchLabelKeysInPodAffinity`.
 {{< /note >}}
 
 Kubernetes включає додаткове поле `mismatchLabelKeys` для спорідненості або антиспорідненості Podʼа. Це поле вказує ключі для міток, які **не** повинні мати збігу з мітками вхідного Podʼа, при задоволенні спорідненості чи антиспорідненості Podʼа.
@@ -293,7 +293,7 @@ spec:
                  # від іншого орендаря.
         labelSelector:
           # Ми повинні мати labelSelector, який вибирає лише Podʼи з міткою орендатора,
-          # інакше цей Pod буде ворогувати Podʼам з DaemonSetʼів, наприклад,
+          # інакше цей Pod буде мати Podʼи з DaemonSetʼів, наприклад,
           # які не повинні мати мітку орендаря.
           matchExpressions:
           - key: tenant
@@ -389,7 +389,7 @@ spec:
 
 Загальний ефект полягає в тому, що кожен екземпляр кешу ймовірно використовується одним клієнтом, який працює на тому ж самому вузлі. Цей підхід спрямований на мінімізацію як перекосу (нерівномірного навантаження), так і затримки.
 
-У вас можуть бути інші причини використання антиспорідненості Podʼа. Дивіться [посібник по ZooKeeper](/uk/docs/tutorials/stateful-application/zookeeper/#tolerating-node-failure)
+У вас можуть бути інші причини використання антиспорідненості Podʼа. Дивіться [посібник по ZooKeeper](/docs/tutorials/stateful-application/zookeeper/#tolerating-node-failure)
 для прикладу StatefulSet, налаштованого з антиспорідненостю для забезпечення високої
 доступності, використовуючи ту ж саму техніку, що й цей приклад.
 
@@ -428,7 +428,7 @@ spec:
 Ви можете використовувати _обмеження розподілу топології_ для керування тим, як {{< glossary_tooltip text="Podʼи" term_id="Pod" >}} розподіляються по вашому кластеру серед недоступних доменів, таких як регіони, зони, вузли або будь-які інші топологічні домени, які ви визначаєте. Ви можете це зробити, щоб покращити продуктивність, очікувану доступність або
 загальне використання.
 
-Докладніше про роботу з обмеженнями розподілу топології Podʼів читайте [тут](/uk/docs/concepts/scheduling-eviction/topology-spread-constraints/).
+Докладніше про роботу з обмеженнями розподілу топології Podʼів читайте [тут](/docs/concepts/scheduling-eviction/topology-spread-constraints/).
 
 ## Оператори {#operators}
 
@@ -454,8 +454,8 @@ spec:
 
 ## {{% heading "whatsnext" %}}
 
-- Дізнайтеся більше про [taint та toleration](/uk/docs/concepts/scheduling-eviction/taint-and-toleration/).
+- Дізнайтеся більше про [taint та toleration](/docs/concepts/scheduling-eviction/taint-and-toleration/).
 - Прочитайте документи про [спорідненісь вузлів](https://git.k8s.io/design-proposals-archive/scheduling/nodeaffinity.md) та про [між-Podʼову (анти)спорідненість](https://git.k8s.io/design-proposals-archive/scheduling/podaffinity.md).
-- Дізнайтеся, як [менеджер топології](/uk/docs/tasks/administer-cluster/topology-manager/) бере участь у рішеннях з розподілу ресурсів на рівні вузлів.
-- Навчиться використовувати [nodeselector](/uk/docs/tasks/configure-pod-container/assign-pods-nodes/).
-- Навчиться використовувати [спорідненісь та антиспорідненісь](/uk/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/).
+- Дізнайтеся, як [менеджер топології](/docs/tasks/administer-cluster/topology-manager/) бере участь у рішеннях з розподілу ресурсів на рівні вузлів.
+- Навчиться використовувати [nodeselector](/docs/tasks/configure-pod-container/assign-pods-nodes/).
+- Навчиться використовувати [спорідненісь та антиспорідненісь](/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/).

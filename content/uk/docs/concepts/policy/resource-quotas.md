@@ -27,7 +27,7 @@ weight: 20
 
 - Якщо створення або оновлення ресурсу порушує обмеження квоти, запит буде відхилено з HTTP кодом стану `403 FORBIDDEN` з повідомленням, яке пояснює обмеження, що було б порушено.
 
-- Якщо квота включена в простір імен для обчислювальних ресурсів, таких як `cpu` та `memory`, користувачі повинні вказати запити або ліміти для цих значень; інакше, система квот може відхилити створення Podʼа. Підказка: Використовуйте контролер допуску `LimitRanger`, щоб надати для Podʼів, які не мають вимог до обчислювальних ресурсів, стандартні обсяги ресурсів.
+- Якщо квоти включені в простір імен для обчислювальних ресурсів, таких як `cpu` та `memory`, користувачі повинні вказати запити або ліміти для цих значень; інакше, система квот може відхилити створення Podʼа. Підказка: Використовуйте контролер допуску `LimitRanger`, щоб надати для Podʼів, які не мають вимог до обчислювальних ресурсів, стандартні обсяги ресурсів.
 
   Дивіться [посібник](/docs/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/) для прикладу того, як уникнути цієї проблеми.
 
@@ -163,8 +163,8 @@ ResourceQuota.
 
 | Область | Опис |
 | ----- | ----------- |
-| `Terminating` | Відповідає Podʼам, де `.spec.activeDeadlineSeconds >= 0` |
-| `NotTerminating` | Відповідає Podʼам, де `.spec.activeDeadlineSeconds is nil` |
+| `Terminating` | Відповідає Podʼам, де `.spec.activeDeadlineSeconds` >= `0` |
+| `NotTerminating` | Відповідає Podʼам, де `.spec.activeDeadlineSeconds` є `nil` |
 | `BestEffort` | Відповідає Podʼам, які мають найкращий рівень якості обслуговування. |
 | `NotBestEffort` | Відповідає Podʼам, які не мають найкращого рівня якості обслуговування. |
 | `PriorityClass` | Відповідає Podʼам, які посилаються на вказаний [клас пріоритету](/docs/concepts/scheduling-eviction/pod-priority-preemption). |
@@ -240,60 +240,14 @@ Podʼи можуть бути створені з певним [пріорите
 - Podʼи в кластері мають один з трьох класів пріоритету: "низький", "середній", "високий".
 - Для кожного пріоритету створюється один обʼєкт квоти.
 
-Збережіть наступний YAML у файл `quota.yml`.
+Збережіть наступний YAML у файл `quota.yaml`.
 
-```yaml
-apiVersion: v1
-kind: List
-items:
-- apiVersion: v1
-  kind: ResourceQuota
-  metadata:
-    name: pods-high
-  spec:
-    hard:
-      cpu: "1000"
-      memory: 200Gi
-      pods: "10"
-    scopeSelector:
-      matchExpressions:
-      - operator : In
-        scopeName: PriorityClass
-        values: ["high"]
-- apiVersion: v1
-  kind: ResourceQuota
-  metadata:
-    name: pods-medium
-  spec:
-    hard:
-      cpu: "10"
-      memory: 20Gi
-      pods: "10"
-    scopeSelector:
-      matchExpressions:
-      - operator : In
-        scopeName: PriorityClass
-        values: ["medium"]
-- apiVersion: v1
-  kind: ResourceQuota
-  metadata:
-    name: pods-low
-  spec:
-    hard:
-      cpu: "5"
-      memory: 10Gi
-      pods: "10"
-    scopeSelector:
-      matchExpressions:
-      - operator : In
-        scopeName: PriorityClass
-        values: ["low"]
-```
+{{% code_sample file="policy/quota.yaml" %}}
 
 Застосуйте YAML за допомогою `kubectl create`.
 
 ```shell
-kubectl create -f ./quota.yml
+kubectl create -f ./quota.yaml
 ```
 
 ```none
@@ -336,33 +290,14 @@ memory      0     20Gi
 pods        0     10
 ```
 
-Створіть Pod із пріоритетом "high". Збережіть наступний YAML у файл `high-priority-pod.yml`.
+Створіть Pod із пріоритетом "high". Збережіть наступний YAML у файл `high-priority-pod.yaml`.
 
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: high-priority
-spec:
-  containers:
-  - name: high-priority
-    image: ubuntu
-    command: ["/bin/sh"]
-    args: ["-c", "while true; do echo hello; sleep 10;done"]
-    resources:
-      requests:
-        memory: "10Gi"
-        cpu: "500m"
-      limits:
-        memory: "10Gi"
-        cpu: "500m"
-  priorityClassName: high
-```
+{{% code_sample file="policy/high-priority-pod.yaml" %}}
 
 Застосуйте його за допомогою `kubectl create`.
 
 ```shell
-kubectl create -f ./high-priority-pod.yml
+kubectl create -f ./high-priority-pod.yaml
 ```
 
 Перевірте, що статистика "Used" для квоти пріоритету "high", `pods-high`, змінилася і що для інших двох квот стан не змінився.
@@ -466,9 +401,9 @@ metadata:
 spec:
   hard:
     requests.cpu: "1"
-    requests.memory: 1Gi
+    requests.memory: "1Gi"
     limits.cpu: "2"
-    limits.memory: 2Gi
+    limits.memory: "2Gi"
     requests.nvidia.com/gpu: 4
 EOF
 ```

@@ -57,10 +57,10 @@ click V "https://mermaid-js.github.io/mermaid-live-editor/edit/#pako:eNqNkkFr2zA
 
 * Знання основ markdown.
 * Користуватись онлайн редактором Mermaid.
-* Користуватись [Hugo shortcodes](/uk/docs/contribute/style/hugo-shortcodes/).
+* Користуватись [Hugo shortcodes](/docs/contribute/style/hugo-shortcodes/).
 * Користуватись [Hugo shortcode {{</* figure */>}}](https://gohugo.io/content-management/shortcodes/#figure).
-* Виконувати [локальний перегляд в Hugo](/uk/docs/contribute/new-content/open-a-pr/#preview-locally).
-* Знати як брати участь у [створенні нового контенту](/uk/docs/contribute/new-content/).
+* Виконувати [локальний перегляд в Hugo](/docs/contribute/new-content/open-a-pr/#preview-locally).
+* Знати як брати участь у [створенні нового контенту](/docs/contribute/new-content/).
 
 {{< note >}}
 Ви можете клацнути на будь-яку діаграму в цьому розділі, щоб перейти до онлайн редактора Mermaid для ознайомлення з нею та редагування
@@ -205,7 +205,7 @@ title: My PR
 Figure 17 shows a simple A to B process.
 some markdown text
 ...
-{{</* mermaid */>}} 
+{{</* mermaid */>}}
     graph TB
     A --> B
 {{</* /mermaid */>}}
@@ -227,7 +227,7 @@ more text
 * Відсутність необхідності окремої обробки файлів зображень `.svg`.
 * Текст контенту, код діаграми та підпис до діаграми знаходяться в одному файлі `.md`.
 
-Ви повинні використовувати [локальний](/uk/docs/contribute/new-content/open-a-pr/#preview-locally) та Netlify попередній перегляд для перевірки правильного показу діаграми.
+Ви повинні використовувати [локальний](/docs/contribute/new-content/open-a-pr/#preview-locally) та Netlify попередній перегляд для перевірки правильного показу діаграми.
 
 {{< caution >}}
 Набір функцій в онлайн редакторі Mermaid може не підтримувати набір функцій Mermaid в проєкті [kubernetes/website](https://github.com/kubernetes/website). Також слід зазначити, що учасники можуть згадувати `kubernetes/website` як `k/website`. Якщо ви бачите синтаксичну помилку або пустий екран після побудови Hugo, розгляньте можливість використання методу Mermaid+SVG.
@@ -307,7 +307,7 @@ Shortcode "\{\{< figure >}}" є рекомендованим методом дл
 * Використання існуючих методів [kubernetes/website](https://github.com/kubernetes/website) для обробки файлів зображень `.svg`.
 * Середовище не вимагає підтримки Mermaid.
 
-Переконайтеся, що ваша діаграма правильно відображається, використовуючи [локальний](/uk/docs/contribute/new-content/open-a-pr/#preview-locally) та Netlify попередній перегляд.
+Переконайтеся, що ваша діаграма правильно відображається, використовуючи [локальний](/docs/contribute/new-content/open-a-pr/#preview-locally) та Netlify попередній перегляд.
 
 ### Зовнішні інструменти {#extrenal-tool}
 
@@ -362,7 +362,7 @@ click E "https://mermaid-js.github.io/mermaid-live-editor/edit/#pako:eNp9kttu00A
 
 Якщо ваш зовнішній інструмент малювання дозволяє:
 
-* Ви можете включати кілька логотипів `.svg` або `.png`, іконок та зображень у свою діаграму. Однак, переконайтеся, що ви дотримуєтеся авторських прав і дотримуєтесь [керівництва](/uk/docs/contribute/style/content-guide/) Kubernetes щодо використання контенту третіх сторін.
+* Ви можете включати кілька логотипів `.svg` або `.png`, іконок та зображень у свою діаграму. Однак, переконайтеся, що ви дотримуєтеся авторських прав і дотримуєтесь [керівництва](/docs/contribute/style/content-guide/) Kubernetes щодо використання контенту третіх сторін.
 * Ви повинні зберегти координати діаграми для подальшого доступу інших учасників. Наприклад, ваш інструмент може надати посилання на зображення діаграми, або ви можете зберегти файл з вихідним кодом, наприклад `.xml`, для доступу інших учасників.
 
 Для отримання додаткової інформації про логотипи та зображення K8s і CNCF, зверніться до розділу [CNCF Artwork](https://github.com/cncf/artwork).
@@ -372,19 +372,19 @@ click E "https://mermaid-js.github.io/mermaid-live-editor/edit/#pako:eNp9kttu00A
 * Учасники добре знайомі з зовнішнім інструментом.
 * Діаграми потребують більше деталей, ніж може надати Mermaid.
 
-Не забудьте перевірити, чи правильно відображається ваша діаграма, використовуючи [локальний](/uk/docs/contribute/new-content/open-a-pr/#preview-locally) та Netlify попередній перегляд.
+Не забудьте перевірити, чи правильно відображається ваша діаграма, використовуючи [локальний](/docs/contribute/new-content/open-a-pr/#preview-locally) та Netlify попередній перегляд.
 
 ## Приклади {#examples}
 
-У цьому розділі показано декілька прикладів діаграм Mermaid. 
+У цьому розділі показано декілька прикладів діаграм Mermaid.
 
 {{< note >}}
-У прикладах блоків коду не використано теґ Hugo Mermaid. Це дозволяє вам скопіювати блок коду до онлайн редактора щоб поекспериментувати на власний розсуд. Зверніть увагу, що редактор не розпізнає Hugo shortcodes. 
+У прикладах блоків коду не використано теґ Hugo Mermaid. Це дозволяє вам скопіювати блок коду до онлайн редактора щоб поекспериментувати на власний розсуд. Зверніть увагу, що редактор не розпізнає Hugo shortcodes.
 {{< /note >}}
 
 ### Приклад 1 — Обмеження на поширення топології Podʼів {#example-1-pod-topology-spread-constraints}
 
-Схема 6 показує діаграму зі сторінки [Обмеження на поширення топології Podʼів](/uk/docs/concepts/scheduling-eviction/topology-spread-constraints/#node-labels)
+Схема 6 показує діаграму зі сторінки [Обмеження на поширення топології Podʼів](/docs/concepts/scheduling-eviction/topology-spread-constraints/#node-labels)
 
 {{< mermaid >}}
     graph TB
@@ -396,7 +396,7 @@ click E "https://mermaid-js.github.io/mermaid-live-editor/edit/#pako:eNp9kttu00A
     n1(Node1)
     n2(Node2)
     end
-    
+
     classDef plain fill:#ddd,stroke:#fff,stroke-width:4px,color:#000;
     classDef k8s fill:#326ce5,stroke:#fff,stroke-width:4px,color:#fff;
     classDef cluster fill:#fff,stroke:#bbb,stroke-width:2px,color:#326ce5;
@@ -417,7 +417,7 @@ click n2 "https://mermaid-js.github.io/mermaid-live-editor/edit/#eyJjb2RlIjoiZ3J
 
 Код:
 
-```mermaid
+```text
 graph TB
    subgraph "zoneB"
        n3(Node3)
@@ -427,7 +427,7 @@ graph TB
        n1(Node1)
        n2(Node2)
    end
- 
+
    classDef plain fill:#ddd,stroke:#fff,stroke-width:4px,color:#000;
    classDef k8s fill:#326ce5,stroke:#fff,stroke-width:4px,color:#fff;
    classDef cluster fill:#fff,stroke:#bbb,stroke-width:2px,color:#326ce5;
@@ -437,7 +437,7 @@ graph TB
 
 ### Приклад 2 – Ingress {#example-2-ingress}
 
-Схема 7 показує діаграму, що зʼявляється на сторінці [Що таке Ingress](/uk/docs/concepts/services-networking/ingress/#what-is-ingress).
+Схема 7 показує діаграму, що зʼявляється на сторінці [Що таке Ingress](/docs/concepts/services-networking/ingress/#what-is-ingress).
 
 {{< mermaid >}}
 graph LR;
@@ -466,11 +466,11 @@ click pod1 "https://mermaid-js.github.io/mermaid-live-editor/edit/#eyJjb2RlIjoiZ
 click pod2 "https://mermaid-js.github.io/mermaid-live-editor/edit/#eyJjb2RlIjoiZ3JhcGggIExSXG4gIGNsaWVudChbY2xpZW50XSktLiBJbmdyZXNzLW1hbmFnZWQgPGJyPiBsb2FkIGJhbGFuY2VyIC4tPmluZ3Jlc3NbSW5ncmVzc107XG4gIGluZ3Jlc3MtLT58cm91dGluZyBydWxlfHNlcnZpY2VbU2VydmljZV07XG4gIHN1YmdyYXBoIGNsdXN0ZXJcbiAgaW5ncmVzcztcbiAgc2VydmljZS0tPnBvZDFbUG9kXTtcbiAgc2VydmljZS0tPnBvZDJbUG9kXTtcbiAgZW5kXG4gIGNsYXNzRGVmIHBsYWluIGZpbGw6I2RkZCxzdHJva2U6I2ZmZixzdHJva2Utd2lkdGg6NHB4LGNvbG9yOiMwMDA7XG4gIGNsYXNzRGVmIGs4cyBmaWxsOiMzMjZjZTUsc3Ryb2tlOiNmZmYsc3Ryb2tlLXdpZHRoOjRweCxjb2xvcjojZmZmO1xuICBjbGFzc0RlZiBjbHVzdGVyIGZpbGw6I2ZmZixzdHJva2U6I2JiYixzdHJva2Utd2lkdGg6MnB4LGNvbG9yOiMzMjZjZTU7XG4gIGNsYXNzIGluZ3Jlc3Msc2VydmljZSxwb2QxLHBvZDIgazhzO1xuICBjbGFzcyBjbGllbnQgcGxhaW47XG4gIGNsYXNzIGNsdXN0ZXIgY2x1c3RlcjtcbiIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJkZWZhdWx0XCJcbn0iLCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9" _blank
 
 {{< /mermaid >}}
-Figure 7. Ingress
+Схема 7. Ingress
 
-Code block:
+Код:
 
-```mermaid
+```text
 graph LR;
  client([client])-. Ingress-managed <br> load balancer .->ingress[Ingress];
  ingress-->|routing rule|service[Service];
@@ -489,13 +489,13 @@ graph LR;
 
 ### Приклад 3 — Потік системи К8s {#example-3-k8s-system-flow}
 
-На схемі 8 зображено Mermaid-діаграму послідовності, яка показує системний потік між компонентами K8 для запуску контейнера. 
+На схемі 8 зображено Mermaid-діаграму послідовності, яка показує системний потік між компонентами K8 для запуску контейнера.
 
 {{< figure src="/docs/images/diagram-guide-example-3.svg" alt="Потік системи К8s" class="diagram-large" caption="Схема 8. Потік системи К8s" link="https://mermaid-js.github.io/mermaid-live-editor/edit/#eyJjb2RlIjoiJSV7aW5pdDp7XCJ0aGVtZVwiOlwibmV1dHJhbFwifX0lJVxuc2VxdWVuY2VEaWFncmFtXG4gICAgYWN0b3IgbWVcbiAgICBwYXJ0aWNpcGFudCBhcGlTcnYgYXMgY29udHJvbCBwbGFuZTxicj48YnI-YXBpLXNlcnZlclxuICAgIHBhcnRpY2lwYW50IGV0Y2QgYXMgY29udHJvbCBwbGFuZTxicj48YnI-ZXRjZCBkYXRhc3RvcmVcbiAgICBwYXJ0aWNpcGFudCBjbnRybE1nciBhcyBjb250cm9sIHBsYW5lPGJyPjxicj5jb250cm9sbGVyPGJyPm1hbmFnZXJcbiAgICBwYXJ0aWNpcGFudCBzY2hlZCBhcyBjb250cm9sIHBsYW5lPGJyPjxicj5zY2hlZHVsZXJcbiAgICBwYXJ0aWNpcGFudCBrdWJlbGV0IGFzIG5vZGU8YnI-PGJyPmt1YmVsZXRcbiAgICBwYXJ0aWNpcGFudCBjb250YWluZXIgYXMgbm9kZTxicj48YnI-Y29udGFpbmVyPGJyPnJ1bnRpbWVcbiAgICBtZS0-PmFwaVNydjogMS4ga3ViZWN0bCBjcmVhdGUgLWYgcG9kLnlhbWxcbiAgICBhcGlTcnYtLT4-ZXRjZDogMi4gc2F2ZSBuZXcgc3RhdGVcbiAgICBjbnRybE1nci0-PmFwaVNydjogMy4gY2hlY2sgZm9yIGNoYW5nZXNcbiAgICBzY2hlZC0-PmFwaVNydjogNC4gd2F0Y2ggZm9yIHVuYXNzaWduZWQgcG9kcyhzKVxuICAgIGFwaVNydi0-PnNjaGVkOiA1LiBub3RpZnkgYWJvdXQgcG9kIHcgbm9kZW5hbWU9XCIgXCJcbiAgICBzY2hlZC0-PmFwaVNydjogNi4gYXNzaWduIHBvZCB0byBub2RlXG4gICAgYXBpU3J2LS0-PmV0Y2Q6IDcuIHNhdmUgbmV3IHN0YXRlXG4gICAga3ViZWxldC0-PmFwaVNydjogOC4gbG9vayBmb3IgbmV3bHkgYXNzaWduZWQgcG9kKHMpXG4gICAgYXBpU3J2LT4-a3ViZWxldDogOS4gYmluZCBwb2QgdG8gbm9kZVxuICAgIGt1YmVsZXQtPj5jb250YWluZXI6IDEwLiBzdGFydCBjb250YWluZXJcbiAgICBrdWJlbGV0LT4-YXBpU3J2OiAxMS4gdXBkYXRlIHBvZCBzdGF0dXNcbiAgICBhcGlTcnYtLT4-ZXRjZDogMTIuIHNhdmUgbmV3IHN0YXRlIiwibWVybWFpZCI6IntcbiAgXCJ0aGVtZVwiOiBcImRlZmF1bHRcIlxufSIsInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjp0cnVlfQ" >}}
 
 Код:
 
-```mermaid
+```text
 
 %%{init:{"theme":"neutral"}}%%
 sequenceDiagram
@@ -520,14 +520,16 @@ sequenceDiagram
     apiSrv-->>etcd: 12. save new state
 ```
 
+## Як стилізувати діаграми {#how-to-style-diagrams}
+
 Ви можете стилізувати один або декілька елементів діаграми за допомогою CSS. Це досягається за допомогою двох типів операторів у коді Mermaid.
 
 * `classDef` визначає клас атрибутів стилю.
-* `class` визначає один або декілька елементів, до яких буде застосовано клас. 
+* `class` визначає один або декілька елементів, до яких буде застосовано клас.
 
-В коді до [схеми 7](#example-2-ingress) ви можете побачити приклад.
+В коді до [схеми 7]([#example-2-ingress](https://mermaid-js.github.io/mermaid-live-editor/edit/#eyJjb2RlIjoiZ3JhcGggIExSXG4gIGNsaWVudChbY2xpZW50XSktLiBJbmdyZXNzLW1hbmFnZWQgPGJyPiBsb2FkIGJhbGFuY2VyIC4tPmluZ3Jlc3NbSW5ncmVzc107XG4gIGluZ3Jlc3MtLT58cm91dGluZyBydWxlfHNlcnZpY2VbU2VydmljZV07XG4gIHN1YmdyYXBoIGNsdXN0ZXJcbiAgaW5ncmVzcztcbiAgc2VydmljZS0tPnBvZDFbUG9kXTtcbiAgc2VydmljZS0tPnBvZDJbUG9kXTtcbiAgZW5kXG4gIGNsYXNzRGVmIHBsYWluIGZpbGw6I2RkZCxzdHJva2U6I2ZmZixzdHJva2Utd2lkdGg6NHB4LGNvbG9yOiMwMDA7XG4gIGNsYXNzRGVmIGs4cyBmaWxsOiMzMjZjZTUsc3Ryb2tlOiNmZmYsc3Ryb2tlLXdpZHRoOjRweCxjb2xvcjojZmZmO1xuICBjbGFzc0RlZiBjbHVzdGVyIGZpbGw6I2ZmZixzdHJva2U6I2JiYixzdHJva2Utd2lkdGg6MnB4LGNvbG9yOiMzMjZjZTU7XG4gIGNsYXNzIGluZ3Jlc3Msc2VydmljZSxwb2QxLHBvZDIgazhzO1xuICBjbGFzcyBjbGllbnQgcGxhaW47XG4gIGNsYXNzIGNsdXN0ZXIgY2x1c3RlcjtcbiIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJkZWZhdWx0XCJcbn0iLCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6dHJ1ZX0)) ви можете побачити приклад.
 
-```none
+```text
 classDef k8s fill:#326ce5,stroke:#fff,stroke-width:4px,color:#fff; // визначає стиль для класу k8s
 class ingress,service,pod1,pod2 k8s; // Клас k8s застосовується до елементів ingress, service, pod1 та pod2.
 ```
@@ -579,7 +581,7 @@ click C "https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNptkctOwkAY
 {{</* figure src="/images/docs/components-of-kubernetes.svg" alt="Kubernetes pod running inside a cluster" class="diagram-large" caption="Схема 4. Компоненти архітектури Kubernetes" */>}}
 ```
 
-Ви повинні передавати значення `src`, `alt`, `class` та `caption` у shortcode `{{</* figure */>}}`. Ви можете змінювати розмір діаграми, використовуючи класи `diagram-large`, `diagram-medium` та `diagram-small`.  
+Ви повинні передавати значення `src`, `alt`, `class` та `caption` у shortcode `{{</* figure */>}}`. Ви можете змінювати розмір діаграми, використовуючи класи `diagram-large`, `diagram-medium` та `diagram-small`.
 
 {{< note >}}
 Діаграми, створені за допомогою методу `Inline`, не використовують shortcode "\{\{< figure >}}". Код Mermaid визначає, як діаграма буде відображатися на вашій сторінці.
@@ -613,7 +615,7 @@ click C "https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNptkctOwkAY
 
 **Посилання на діаграму**
 
-Нарешті, ви можете додати посилання на діаграму. Воно використовується у вашому тексті та повинно передувати самій діаграмі. Це дозволяє користувачеві повʼязати ваш текст із відповідною діаграмою. `Схема НОМЕР` у вашому посиланні та підписі повинні співпадати.  
+Нарешті, ви можете додати посилання на діаграму. Воно використовується у вашому тексті та повинно передувати самій діаграмі. Це дозволяє користувачеві повʼязати ваш текст із відповідною діаграмою. `Схема НОМЕР` у вашому посиланні та підписі повинні співпадати.
 
 Вам слід уникати використання розпливчастих посилань, таких як `..зображення нижче..` або `..наступна схема..`
 
@@ -641,29 +643,29 @@ click C "https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNptkctOwkAY
 ## Поради {#tips}
 
 * Завжди використовуйте оналйн редактор для створення/редагування вашої діаграми.
-  
+
 * Завжди використовуйте локальний Hugo та попередній перегляд Netlify, щоб перевірити, як діаграма відображається в документації.
-  
+
 * Включайте джерела діаграм, такі як URL, місцезнаходження вихідного коду або вказуйте, що код є самодокументуючим.
-  
+
 * Завжди використовуйте підписи до діаграм.
-  
+
 * Дуже корисно включати зображення діаграми у форматі `.svg` або `.png` та/або вихідний код Mermaid у тікетах та PRs.
 
 * Для методів `Mermaid+SVG` та `External Tool` використовуйте файли зображень `.svg`, оскільки вони залишаються чіткими при збільшенні діаграми.
 
 * Найкраща практика для файлів `.svg` — завантажити їх в інструмент для редагування SVG та використати функцію "Конвертувати текст у криві". Це гарантує, що діаграма відображатиметься однаково на всіх системах, незалежно від доступності шрифтів і підтримки рендерингу шрифтів.
-  
+
 * Mermaid не підтримує додаткові іконки або зображень.
-  
+
 * Shortcodes Hugo Mermaid не працюють в оналайн редакторі.
-  
+
 * Кожного разу, коли ви змінюєте діаграму в оналайн редакторі, ви __повинні__ зберегти її, щоб згенерувати новий URL для діаграми.
-  
+
 * Натисніть на діаграми в цьому розділі, щоб переглянути код і відображення діаграми в оналайн редакторі.
 
 * Перегляньте вихідний код цієї сторінки, `diagram-guide.md`, для отримання додаткових прикладів.
-  
+
 * Ознайомтеся з [документацією Mermaid](https://mermaid-js.github.io/mermaid/#/), щоб отримати пояснення та приклади.
 
 Найважливіше — __Робіть діаграми простими__. Це заощадить час вам і вашим колегам-учасникам, а також полегшить читання для нових та досвідчених користувачів.

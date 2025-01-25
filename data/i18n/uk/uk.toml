@@ -18,6 +18,9 @@ other = "Показати більше…"
 [banner_acknowledgement]
 other = "Приховати це повідомлення"
 
+[browser_clipboard_support_warning]
+other = "Вибачте, ваш вебоглядач не підтримує копіювання цього прикладу в буфер обміну."
+
 [case_study_prefix]
 other = "Приклад:"
 
@@ -169,6 +172,9 @@ other = "Змінні оточення"
 
 [error_404_were_you_looking_for]
 other = "Подивіться:"
+
+[error_copy_to_clipboard]
+other = "Помилка"
 
 [examples_heading]
 other = "Приклади"
@@ -602,8 +608,14 @@ other = "Зміни"
 [seealso_heading]
 other = "Дивіться також"
 
+[sidebar_toggle_nav]
+other = "Переключити навігацію по розділах"
+
 [subscribe_button]
 other = "Підписатися"
+
+[success_copy_to_clipboard]
+other = "Успішно"
 
 [synopsis_heading]
 other = "Огляд"
@@ -614,12 +626,20 @@ other = """Цей розділ містить посилання на проєк
 [thirdparty_message_edit_disclaimer]
 other="""Поради щодо сторонього вмісту"""
 
-
 [thirdparty_message_single_item]
 other = """&#128711; Цей елемент посилається на сторонній проєкт або продукт, який не є частиною Kubernetes. <a class="alert-more-info" href="#third-party-content-disclaimer">Докладніше</a>"""
 
 [thirdparty_message_disclaimer]
 other = """<p>Елементи на цій сторінці відносяться до сторонніх продуктів чи проєктів, які надають функціонал, необхідний для Kubernetes. Автори проєкту Kubernetes не несуть відповідальності за ці проєкти. Ознайомтесь з <a href="https://github.com/cncf/foundation/blob/master/website-guidelines.md" target="_blank">настановами на вебсайті CNCF</a> для отримання докладної інформації.</p><p>Ознайомтесь з <a href="/uk/docs/contribute/style/content-guide/#third-party-content">посібником з контенту</a> перед тим, як пропонувати додавання посилання на стороні компоненти.</p>"""
+
+[thirdparty_message_vendor]
+other = """На цій сторінці є посилання на постачальників, які не належать до Kubernetes. Автори проєкту Kubernetes не несуть відповідальності за ці сторонні продукти або проєкти. Для додавання постачальника, продукта або проєкта до цього списку, ознаймтесь з <a href="/uk/docs/contribute/style/content-guide/#third-party-content”>настановами щодо вмісту</a> перед додаванням змін. <a href="#third-party-content-disclaimer">Додаткова інформація.</a>"""
+
+[toast_failure_copycode]
+other="Не вдалося скопіювати в буфер обміну: "
+
+[toast_success_copycode]
+other = "Скопійовано до буферу обміну: "
 
 [translated_by]
 other = "Перекладач(і)"
@@ -641,6 +661,9 @@ other = "Версії"
 
 [warning]
 other = "Попередження:"
+
+[warning_copy_to_clipboard]
+other = "Попередження"
 
 [whatsnext_heading]
 other = "Що далі"

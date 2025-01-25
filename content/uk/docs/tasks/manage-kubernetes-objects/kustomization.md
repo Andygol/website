@@ -8,7 +8,7 @@ weight: 20
 
 [Kustomize](https://github.com/kubernetes-sigs/kustomize) — це окремий інструмент для налаштування обʼєктів Kubernetes за допомогою [файлу кастомізації](https://kubectl.docs.kubernetes.io/references/kustomize/glossary/#kustomization).
 
-Починаючи з версії 1.14, Kubectl також підтримує керування обʼєктами Kubernetes за допомогою файлу кастомізації. Для перегляду ресурсів, знайдених у теці, що містить файл кастомізації, виконайте наступну команду:
+Починаючи з версії 1.14, kubectl також підтримує керування обʼєктами Kubernetes за допомогою файлу кастомізації. Для перегляду ресурсів, знайдених у теці, що містить файл кастомізації, виконайте наступну команду:
 
 ```shell
 kubectl kustomize <kustomization_directory>
@@ -289,7 +289,7 @@ metadata:
 type: Opaque
 ```
 
-Podʼібно до ConfigMaps, створені Secrets можна використовувати у Deployment, посилаючись на імʼя secretGenerator:
+Подібно до ConfigMaps, створені Secrets можна використовувати у Deployment, посилаючись на імʼя secretGenerator:
 
 ```shell
 # Створіть файл password.txt
@@ -449,7 +449,7 @@ spec:
 
 ### Компонування та кастомізація ресурсів {#composing-and-customizing-resources}
 
-Часто в проєкті складають набір Ресурсів та керують ними всередині одного файлу чи теки. Kustomize пропонує компонування Ресурсів з різних файлів та застосування патчів чи інших налаштувань до них.
+Часто в проєкті складають набір ресурсів та керують ними всередині одного файлу чи теки. Kustomize пропонує компонування ресурсів з різних файлів та застосування патчів чи інших налаштувань до них.
 
 #### Компонування {#composing}
 
@@ -507,7 +507,7 @@ EOF
 
 #### Кастомізація {#customizing}
 
-Патчі можуть бути використані для застосування різних кастомізацій до Ресурсів. Kustomize підтримує різні механізми патчів через `StrategicMerge` та `Json6902` за допомогою поля `patches`. `patches` може бути файлом або вбудованим рядком, спрямованим на один або декілька ресурсів.
+Патчі можуть бути використані для застосування різних кастомізацій до ресурсів. Kustomize підтримує різні механізми патчів через `StrategicMerge` та `Json6902` за допомогою поля `patches`. `patches` може бути файлом або вбудованим рядком, спрямованим на один або декілька ресурсів.
 
 Поле `patches` містить список застосованих патчів у порядку їхнього зазначення. Патч вибирає ресурси за `group`, `version`, `kind`, `name`, `namespace`, `labelSelector` і `annotationSelector`.
 
@@ -599,7 +599,7 @@ spec:
             memory: 512Mi
 ```
 
-Не всі Ресурси чи поля підтримують патчі  `strategicMerge`. Для підтримки зміни довільних полів у довільних Ресурсах, Kustomize пропонує застосування [JSON патчів](https://tools.ietf.org/html/rfc6902) через `patchesJson6902`. Щоб знайти правильний Ресурс для патча `Json6902`, обовʼязково потрібно вказати поле `target` у файлі `kustomization.yaml`.
+Не всі ресурси чи поля підтримують патчі  `strategicMerge`. Для підтримки зміни довільних полів у довільних Ресурсах, Kustomize пропонує застосування [JSON патчів](https://tools.ietf.org/html/rfc6902) через `patchesJson6902`. Щоб знайти правильний Ресурс для патча `Json6902`, обовʼязково потрібно вказати поле `target` у файлі `kustomization.yaml`.
 
 Наприклад, збільшити кількість реплік обʼєкта Deployment можна також за допомогою патчу `Json6902`. Цільовий ресурс знаходиться за допомогою `group`, `version`, `kind` та `name` з поля `target`.
 
@@ -972,25 +972,25 @@ deployment.apps "dev-my-nginx" deleted
 
 ## Перелік елементів Kustomize {#kustomize-feature-list}
 
-| Поле                  | Тип                                                                                                          | Пояснення                                                                        |
-|-----------------------|--------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| bases                 | []string                                                                                                     | Кожен запис у цьому списку має вказувати на теку, що містить файл kustomization.yaml |
-| commonAnnotations     | map[string]string                                                                                            | анотації, які додаються до всіх ресурсів                                                |
-| commonLabels          | map[string]string                                                                                            | мітки, які додаються до всіх ресурсів та селекторів                                       |
-| configMapGenerator    | [][ConfigMapArgs](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/configmapargs.go#L7)    | Кожен запис у цьому списку генерує ConfigMap                                     |
-| configurations        | []string                                                                                                     | Кожен запис у цьому списку має вказувати на файл, що містить [конфігурації трансформаторів Kustomize](https://github.com/kubernetes-sigs/kustomize/tree/master/examples/transformerconfigs) |
-| crds                  | []string                                                                                                     | Кожен запис у цьому списку має вказувати на файл визначення OpenAPI для типів Kubernetes |
-| generatorOptions      | [GeneratorOptions](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/generatoroptions.go#L7) | Змінює поведінку всіх генераторів ConfigMap та Secret                             |
-| images                | [][Image](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/image.go#L8)                    | Кожен запис змінює імʼя, теґи та/або дайджест для одного образу без створення патчів |
-| labels                | map[string]string                                                                                            | Додає мітки без автоматичного додавання відповідних селекторів                   |
-| namePrefix            | string                                                                                                       | значення цього поля додається на початок імен всіх ресурсів                      |
-| nameSuffix            | string                                                                                                       | значення цього поля додається в кінець імен всіх ресурсів                        |                               |
-| patchesJson6902       | [][Patch](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/patch.go#L10)                   | Кожен запис у цьому списку має вказувати на обʼєкт Kubernetes та Json Patch      |                         |
-| patchesStrategicMerge | []string                                                                                                     | Кожен запис у цьому списку має вказувати на стратегічний патч злиття обʼєкта Kubernetes |
-| replacements          | [][Replacements](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/replacement.go#L15)      | копіює значення з поля ресурсу в будь-яку кількість зазначених цілей             |
-| resources             | []string                                                                                                     | Кожен запис у цьому списку має вказувати на наявний файл конфігурації ресурсу    |
-| secretGenerator       | [][SecretArgs](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/secretargs.go#L7)          | Кожен запис у цьому списку генерує Secret                                        |
-| vars                  | [][Var](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/var.go#L19)                       | Кожен запис призначений для захоплення тексту з поля одного ресурсу
+| Поле | Тип | Пояснення |
+|------|-----|-----------|
+| bases | []string | Кожен запис у цьому списку має вказувати на теку, що містить файл kustomization.yaml |
+| commonAnnotations | map[string]string | анотації, які додаються до всіх ресурсів |
+| commonLabels | map[string]string | мітки, які додаються до всіх ресурсів та селекторів |
+| configMapGenerator | [][ConfigMapArgs](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/configmapargs.go#L7) | Кожен запис у цьому списку генерує ConfigMap |
+| configurations | []string | Кожен запис у цьому списку має вказувати на файл, що містить [конфігурації трансформаторів Kustomize](https://github.com/kubernetes-sigs/kustomize/tree/master/examples/transformerconfigs) |
+| crds | []string | Кожен запис у цьому списку має вказувати на файл визначення OpenAPI для типів Kubernetes |
+| generatorOptions | [GeneratorOptions](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/generatoroptions.go#L7) | Змінює поведінку всіх генераторів ConfigMap та Secret |
+| images | [][Image](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/image.go#L8) | Кожен запис змінює імʼя, теґи та/або дайджест для одного образу без створення патчів |
+| labels | map[string]string | Додає мітки без автоматичного додавання відповідних селекторів |
+| namePrefix | string | значення цього поля додається на початок імен всіх ресурсів |
+| nameSuffix | string | значення цього поля додається в кінець імен всіх ресурсів | |
+| patchesJson6902 | [][Patch](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/patch.go#L10) | Кожен запис у цьому списку має вказувати на обʼєкт Kubernetes та Json Patch | |
+| patchesStrategicMerge | []string | Кожен запис у цьому списку має вказувати на стратегічний патч злиття обʼєкта Kubernetes |
+| replacements | [][Replacements](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/replacement.go#L15) | копіює значення з поля ресурсу в будь-яку кількість зазначених цілей |
+| resources | []string | Кожен запис у цьому списку має вказувати на наявний файл конфігурації ресурсу |
+| secretGenerator | [][SecretArgs](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/secretargs.go#L7) | Кожен запис у цьому списку генерує Secret |
+| vars | [][Var](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/var.go#L19) | Кожен запис призначений для захоплення тексту з поля одного ресурсу
 
 ## {{% heading "whatsnext" %}}
 

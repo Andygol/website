@@ -38,7 +38,7 @@ kubernetes   10.96.0.0/28   17d
 kubectl get service kubernetes
 ```
 
-```
+```none
 NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   17d
 ```

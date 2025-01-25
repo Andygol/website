@@ -6,7 +6,7 @@ weight: 17
 
 <!-- overview -->
 
-Щоб масштабувати застосунок і надавати надійні послуги, вам потрібно розуміти, як застосунок працює при його розгортанні. Ви можете аналізувати продуктивність застосунку в кластері Kubernetes, перевіряючи контейнери, [Podʼи](/uk/docs/concepts/workloads/pods/), [Serviceʼи](/uk/docs/concepts/services-networking/service/) та загальні характеристики кластера. Kubernetes надає докладну інформацію про використання ресурсів застосункам на кожному з цих рівнів. Ця інформація дозволяє оцінити продуктивність вашого застосунку та визначити місця, де можна видалити перешкоди, щоб покращити загальну продуктивність.
+Щоб масштабувати застосунок і надавати надійні послуги, вам потрібно розуміти, як застосунок працює при його розгортанні. Ви можете аналізувати продуктивність застосунку в кластері Kubernetes, перевіряючи контейнери, [Podʼи](/docs/concepts/workloads/pods/), [Serviceʼи](/docs/concepts/services-networking/service/) та загальні характеристики кластера. Kubernetes надає докладну інформацію про використання ресурсів застосункам на кожному з цих рівнів. Ця інформація дозволяє оцінити продуктивність вашого застосунку та визначити місця, де можна видалити перешкоди, щоб покращити загальну продуктивність.
 
 <!-- body -->
 
@@ -14,9 +14,9 @@ weight: 17
 
 ## Конвеєр метрик ресурсів {#resource-metrics-pipeline}
 
-Конвеєр метрик ресурсів надає обмежений набір метрик, повʼязаних з компонентами кластера, такими як контролер [Горизонтального автомасштабування Podʼів](/uk/docs/tasks/run-application/horizontal-pod-autoscale/) та утилітою `kubectl top`. Ці метрики збираються легким, тимчасовим, розташованим в памʼяті [metrics-server](https://github.com/kubernetes-sigs/metrics-server) та експонується через API `metrics.k8s.io`.
+Конвеєр метрик ресурсів надає обмежений набір метрик, повʼязаних з компонентами кластера, такими як контролер [Горизонтального автомасштабування Podʼів](/docs/tasks/run-application/horizontal-pod-autoscale/) та утилітою `kubectl top`. Ці метрики збираються легким, тимчасовим, розташованим в памʼяті [metrics-server](https://github.com/kubernetes-sigs/metrics-server) та експонується через API `metrics.k8s.io`.
 
-Metrics-server виявляє всі вузли в кластері та запитує [kubelet](/uk/docs/reference/command-line-tools-reference/kubelet/) кожного вузла для визначення використання центрального процесора та памʼяті. Kubelet виступає як міст між майстром Kubernetes та вузлами, керуючи Podʼами та контейнерами, що працюють на машині. Kubelet перетворює кожний Pod у його складові контейнери та отримує статистику використання кожного контейнера через інтерфейс середовища виконання контейнерів. Якщо ви використовуєте середовище виконання контейнерів, яке використовує Linux cgroups та простори імен для роботи контейнерів, і середовище виконання контейнерів не публікує статистику використання, тоді kubelet може отримувати ці статистичні дані безпосередньо (використовуючи код з [cAdvisor](https://github.com/google/cadvisor)). Незалежно від того, як надходять ці статистичні дані, kubelet після цього використовує агреговану статистику використання ресурсів Podʼів через metrics-server Resource Metrics API. Цей API надається за адресою `/metrics/resource/v1beta1` на автентифікованих та портах kublet, доступних тільки для читання.
+Metrics-server виявляє всі вузли в кластері та запитує [kubelet](/docs/reference/command-line-tools-reference/kubelet/) кожного вузла для визначення використання центрального процесора та памʼяті. Kubelet виступає як міст між майстром Kubernetes та вузлами, керуючи Podʼами та контейнерами, що працюють на машині. Kubelet перетворює кожний Pod у його складові контейнери та отримує статистику використання кожного контейнера через інтерфейс середовища виконання контейнерів. Якщо ви використовуєте середовище виконання контейнерів, яке використовує Linux cgroups та простори імен для роботи контейнерів, і середовище виконання контейнерів не публікує статистику використання, тоді kubelet може отримувати ці статистичні дані безпосередньо (використовуючи код з [cAdvisor](https://github.com/google/cadvisor)). Незалежно від того, як надходять ці статистичні дані, kubelet після цього використовує агреговану статистику використання ресурсів Podʼів через metrics-server Resource Metrics API. Цей API надається за адресою `/metrics/resource/v1beta1` на автентифікованих та портах kublet, доступних тільки для читання.
 
 ## Конвеєр повних метрик {#full-metrics-pipeline}
 
@@ -36,9 +36,8 @@ Kubernetes розроблено для роботи з [OpenMetrics](https://ope
 
 Дізнайтеся про додаткові інструменти для налагодження, включаючи:
 
-* [Логування](/uk/docs/concepts/cluster-administration/logging/)
-* [Моніторинг](/uk/docs/tasks/debug/debug-cluster/resource-usage-monitoring/)
-* [Вхід у контейнери через `exec`](/uk/docs/tasks/debug/debug-application/get-shell-running-container/)
-* [Підключення до контейнерів через проксі](/uk/docs/tasks/extend-kubernetes/http-proxy-access-api/)
-* [Підключення до контейнерів через перенаправлення портів](/uk/docs/tasks/access-application-cluster/port-forward-access-application-cluster/)
-* [Огляд вузла Kubernetes за допомогою crictl](/uk/docs/tasks/debug/debug-cluster/crictl/)
+* [Логування](/docs/concepts/cluster-administration/logging/)
+* [Вхід у контейнери через `exec`](/docs/tasks/debug/debug-application/get-shell-running-container/)
+* [Підключення до контейнерів через проксі](/docs/tasks/extend-kubernetes/http-proxy-access-api/)
+* [Підключення до контейнерів через перенаправлення портів](/docs/tasks/access-application-cluster/port-forward-access-application-cluster/)
+* [Огляд вузла Kubernetes за допомогою crictl](/docs/tasks/debug/debug-cluster/crictl/)
