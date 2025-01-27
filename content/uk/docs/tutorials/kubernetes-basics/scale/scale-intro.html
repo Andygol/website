@@ -25,7 +25,7 @@ description: |-
 
            <h3>Масштабування Застосунку</h3>
 
-                <p>Раніше ми створили <a href="/uk/docs/concepts/workloads/controllers/deployment/">Deployment</a>, а потім робили його загальнодоступним за допомогою <a href="/uk/docs/concepts/services-networking/service/">Service</a>. Deployment створив лише один Pod для запуску нашого pfcnjceyre. Зі збільшенням трафіку, нам потрібно масштабувати застосунок, щоб відповідати зростаючим вимогам користувачів.</p>
+                <p>Раніше ми створили <a href="/uk/docs/concepts/workloads/controllers/deployment/">Deployment</a>, а потім робили його загальнодоступним за допомогою <a href="/uk/docs/concepts/services-networking/service/">Service</a>. Deployment створив лише один Pod для запуску нашого застосунку. Зі збільшенням трафіку, нам потрібно масштабувати застосунок, щоб відповідати зростаючим вимогам користувачів.</p>
                 <p>Якщо ви ще не працювали над попередніми розділами, почніть з <a href="/uk/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro/">Використання minikube для створення кластера</a>.</p>
 
                 <p><em>Масштабування</em> досягається зміною кількості реплік в Deployment.</p>
@@ -96,7 +96,7 @@ description: |-
 
                     <p>Масштабування Deployment гарантує створення нових Podʼів і їх призначення на Вузли з вільними ресурсами. Масштабування збільшить кількість Podʼів до нового бажаного стану. Kubernetes також підтримує <a href="/uk/docs/tasks/run-application/horizontal-pod-autoscale/">автоматичне масштабування</a> Podʼів, але це виходить за рамки цього посібника. Також можливе масштабування до нуля, і це призведе до завершення всіх Podʼів вказаного Deployment.</p>
 
-                    <p>Запуск кількох екземплярів застосунку вимагає засобів для розподілу трафіку між ними. У Service є вбудований балансер навантаження, який розподілить мережевий трафік на всі Podʼи, що виставлені Deployment. Service будуть постійно відстежувати робочі Podʼи, використовуючи точки доступу, щоб гарантувати, що трафік направляється лише на доступні Podʼи.</p>
+                    <p>Запуск кількох екземплярів застосунку вимагає засобів для розподілу трафіку між ними. У Service є вбудований балансувальник навантаження, який розподілить мережевий трафік на всі Podʼи, які експонує Deployment. Service будуть постійно відстежувати робочі Podʼи, використовуючи точки доступу, щоб гарантувати, що трафік направляється лише на доступні Podʼи.</p>
 
                 </div>
                 <div class="col-md-4">
@@ -120,13 +120,13 @@ description: |-
                    <p>Щоб переглянути свій Deployment, використовуйте команду <code>get deployments</code>:</p>
                    <p><code><b>kubectl get deployments</b></code></p>
                    <p>Вивід повинен бути схожий на:</p>
-    <pre>
-    NAME                  READY   UP-TO-DATE   AVAILABLE   AGE
-    kubernetes-bootcamp   1/1     1            1           11m
-    </pre>
-                   <p>Маємо 1 Pod. Якщо цього немає, виконайте команду ще раз. Тут маємо:</p>
+<pre>
+NAME                  READY   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   1/1     1            1           11m
+</pre>
+                   <p>Маємо 1 Pod. Якщо його немає, виконайте команду ще раз. Тут маємо:</p>
                    <ul>
-                   <li><em>NAME</em> — назви Deployment в кластері.</li>
+                   <li><em>NAME</em> — назва Deployment в кластері.</li>
                    <li><em>READY</em> — показує співвідношення поточних/бажаних реплік</li>
                    <li><em>UP-TO-DATE</em> — показує кількість реплік, які були оновлені для досягнення бажаного стану.</li>
                    <li><em>AVAILABLE</em> — показує, скільки реплік застосунку доступні користувачам.</li>
@@ -184,7 +184,7 @@ Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-644c5687f4-4hjvf | 
 
             <div class="row">
                 <div class="col-md-12">
-                   <h3>Зменшення розгортання</h3>
+                   <h3>Зменшення масштабу розгортання</h3>
                    <p>Щоб зменшити Deployment до 2 реплік, знову запустіть команду <code>scale</code>:</p>
                    <p><code><b>kubectl scale deployments/kubernetes-bootcamp --replicas=2</b></code></p>
                    <p>Перевірте Deployment, щоб переконатися, що зміни були застосовані, за допомогою команди <code>get deployments</code>:</p>
